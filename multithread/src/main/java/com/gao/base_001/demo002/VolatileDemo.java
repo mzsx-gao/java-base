@@ -1,4 +1,4 @@
-package com.gao.base_001.sync007;
+package com.gao.base_001.demo002;
 
 /**
  * volatile关键字的主要作用是使变量在多个线程间可见
@@ -12,7 +12,7 @@ package com.gao.base_001.sync007;
  * @author Gao
  *
  */
-public class RunThread extends Thread{
+public class VolatileDemo extends Thread{
 
 	private volatile boolean isRunning = true;
 	private void setRunning(boolean isRunning){
@@ -28,7 +28,7 @@ public class RunThread extends Thread{
 	}
 	
 	public static void main(String[] args) throws InterruptedException {
-		RunThread rt = new RunThread();
+		VolatileDemo rt = new VolatileDemo();
 		rt.start();
 		Thread.sleep(1000);
 		rt.setRunning(false);
