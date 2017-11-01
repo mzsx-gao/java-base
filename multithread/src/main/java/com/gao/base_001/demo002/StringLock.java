@@ -1,4 +1,4 @@
-package com.gao.base_001.sync006;
+package com.gao.base_001.demo002;
 
 /**
  * synchronized代码块对字符串的锁，注意String常量池的缓存功能

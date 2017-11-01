@@ -1,4 +1,4 @@
-package com.gao.base_001.sync003;
+package com.gao.base_001.demo001;
 
 /**
  * 对象锁的同步和异步问题

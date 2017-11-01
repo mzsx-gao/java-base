@@ -1,4 +1,4 @@
-package com.gao.base_001.sync006;
+package com.gao.base_001.demo002;
 
 /**
  * 使用synchronized代码块加锁,比较灵活

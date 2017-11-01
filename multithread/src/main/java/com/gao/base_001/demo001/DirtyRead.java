@@ -1,4 +1,4 @@
-package com.gao.base_001.sync004;
+package com.gao.base_001.demo001;
 
 /**
  * 业务整体需要使用完整的synchronized，保持业务的原子性。

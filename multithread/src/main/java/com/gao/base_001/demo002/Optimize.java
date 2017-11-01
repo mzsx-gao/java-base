@@ -1,4 +1,4 @@
-package com.gao.base_001.sync006;
+package com.gao.base_001.demo002;
 
 /**
  * 使用synchronized代码块减小锁的粒度，提高性能

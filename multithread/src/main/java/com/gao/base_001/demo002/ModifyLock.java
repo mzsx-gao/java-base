@@ -1,4 +1,4 @@
-package com.gao.base_001.sync006;
+package com.gao.base_001.demo002;
 /**
  * 同一对象属性的修改不会影响锁的情况
  * @author Gao

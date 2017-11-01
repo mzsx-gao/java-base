@@ -1,4 +1,4 @@
-package com.gao.base_001.sync002;
+package com.gao.base_001.demo001;
 
 /**
  * 关键字synchronized取得的锁都是对象锁，而不是把一段代码（方法）当做锁，
@@ -38,14 +38,12 @@ public class MultiThread {
 		final MultiThread m2 = new MultiThread();
 
 		Thread t1 = new Thread(new Runnable() {
-			@SuppressWarnings("static-access")
 			@Override
 			public void run() {
 				m1.printNum("a");
 			}
 		});
 		Thread t2 = new Thread(new Runnable() {
-			@SuppressWarnings("static-access")
 			@Override
 			public void run() {
 				m2.printNum("b");

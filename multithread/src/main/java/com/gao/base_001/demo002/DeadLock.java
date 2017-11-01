@@ -1,4 +1,4 @@
-package com.gao.base_001.sync006;
+package com.gao.base_001.demo002;
 
 /**
  * 死锁问题，在设计程序时就应该避免双方相互持有对方的锁的情况
@@ -63,7 +63,5 @@ public class DeadLock implements Runnable{
 		}
 		t2.start();
 	}
-	
 
-	
 }

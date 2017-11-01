@@ -1,6 +1,7 @@
-package com.gao.base_001.sync006;
+package com.gao.base_001.demo002;
 /**
  * 锁对象的改变问题
+ * 对象本身已经改变，那么持有的锁就已经不同
  * @author Gao
  *
  */
