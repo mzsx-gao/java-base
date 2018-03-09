@@ -11,6 +11,7 @@
     <modules>
         <module>designPattern</module>
         <module>multithread</module>
+        <module>other</module>
     </modules>
 
 
