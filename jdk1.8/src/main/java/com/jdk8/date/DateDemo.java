@@ -1,11 +1,11 @@
 package com.jdk8.date;
 
 import org.junit.Test;
-import java.time.DayOfWeek;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
+
+import java.time.*;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoField;
+import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalAdjusters;
 
 /**
@@ -62,6 +62,17 @@ public class DateDemo {
         //日期格式转字符串
         System.out.println(LocalDate.now().format(DateTimeFormatter.BASIC_ISO_DATE));
 
+        //计算两个日期差
+        Period period = Period.between(today,crischristmas);
+        System.out.println("两只相差..."+period.getYears()+"年"+period.getMonths()+"月"+period.getDays());
+        System.out.println("总共差"+ChronoUnit.DAYS.between(today,crischristmas)+"天");
+
+
+        LocalDate with = today.with(ChronoField.MONTH_OF_YEAR, 9);
+        System.out.println("将改日期的月份改为9月份..."+with);
+
+
+        System.out.println(today.getDayOfWeek());
     }
 
     /**
@@ -102,6 +113,7 @@ public class DateDemo {
         //获取当前时间
         LocalDateTime localDateTime = LocalDateTime.now();
         System.out.println("当前时间..."+localDateTime);
+
     }
 
 }
