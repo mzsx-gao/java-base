@@ -17,20 +17,17 @@ public class CPU extends Colleague {
     private String soundData = null;
 
     /// 获取分解出来的视频数据
-    public String GetVideioData()
-    {
+    public String GetVideioData() {
         return this.videioData;
     }
 
     /// 获取分解出来的声音数据
-    public String GetSoundData()
-    {
+    public String GetSoundData() {
         return this.soundData;
     }
 
     /// 处理数据
-    public void ExecuteData(String data)
-    {
+    public void ExecuteData(String data) {
         String[] ss = data.split(",");
         this.videioData = ss[0];
         this.soundData = ss[1];

@@ -11,8 +11,7 @@ public class VideoCard extends Colleague {
 		super(mediator);
 	}
 
-	public void ShowData(String data)
-    {
+	public void ShowData(String data) {
         System.out.println("您正在看：" + data);
     }
 }

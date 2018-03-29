@@ -11,14 +11,12 @@ public abstract class Colleague {
     private Mediator mediator;
 
     //构造函数，传入中介者对象
-    public Colleague(Mediator mediator)
-    {
+    public Colleague(Mediator mediator) {
         this.mediator = mediator;
     }
 
     //得到当前同事类的中介者对象
-    public Mediator GetMediator()
-    {
+    public Mediator GetMediator() {
         return this.mediator;
     }
 }

@@ -13,7 +13,7 @@ public class Subject {
 	/**
      * 用来保存注册的观察者对象，也就是报纸的订阅者
      */
-    private List<Observer> readers = new ArrayList<Observer>();
+    private List<Observer> readers = new ArrayList<>();
  
     /**
      * 报纸的读者需要先向报社订阅，先要注册

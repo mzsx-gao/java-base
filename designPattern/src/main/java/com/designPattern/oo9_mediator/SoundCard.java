@@ -11,8 +11,7 @@ public class SoundCard extends Colleague {
 		super(mediator);
 	}
 	/// 显示声音数据源
-    public void ShowData(String data)
-    {
+    public void ShowData(String data) {
        System.out.println("您正在听：" + data);
     }
 
