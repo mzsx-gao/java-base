@@ -7,7 +7,7 @@ public class PayManager extends Aggregate{
 	 /**
      * 聚合对象，这里是Java的集合对象
      */
-    private List<PayModel> list = new ArrayList<PayModel>();
+    private List<PayModel> list = new ArrayList<>();
     /**
      * 获取工资列表
      * @return 工资列表
