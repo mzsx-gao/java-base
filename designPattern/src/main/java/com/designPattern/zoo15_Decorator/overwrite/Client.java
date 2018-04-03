@@ -10,8 +10,7 @@ public class Client {
         Component c1 = new ConcreteComponent();
 
         //然后对计算的基本奖金进行装饰，这里要组合各个装饰
-        //说明，各个装饰者之间最好是不要有先后顺序的限制，
-        //也就是先装饰谁和后装饰谁都应该是一样的
+        //说明，各个装饰者之间最好是不要有先后顺序的限制，也就是先装饰谁和后装饰谁都应该是一样的
 
         //先组合普通业务人员的奖金计算
         Decorator d1 = new MonthPrizeDecorator(c1);
@@ -25,9 +24,9 @@ public class Client {
 //        System.out.println("==========李四应得奖金："+ls);
 
 
-//        //如果是业务经理，还需要一个计算团队的奖金计算
-//        Decorator d3 = new GroupPrizeDecorator(d2);
-//        double ww = d3.calcPrize("王五",null,null);
-//        System.out.println("==========王经理应得奖金："+ww);
+        //如果是业务经理，还需要一个计算团队的奖金计算
+        Decorator d3 = new GroupPrizeDecorator(d2);
+        double ww = d3.calcPrize("王五",null,null);
+        System.out.println("==========王经理应得奖金："+ww);
     }
 }
