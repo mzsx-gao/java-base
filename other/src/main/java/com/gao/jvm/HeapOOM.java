@@ -21,5 +21,7 @@ public class HeapOOM {
         while (true){
             list.add(new OOMObject());
         }
+
+
     }
 }
