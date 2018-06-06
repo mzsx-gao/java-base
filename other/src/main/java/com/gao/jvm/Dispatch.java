@@ -1,0 +1,39 @@
+package com.gao.jvm;
+
+/**
+ *   名称: Dispatch.java
+ *   描述:
+ *   类型: JAVA
+ *   最近修改时间:2018/6/6 11:09
+ *   @version [版本号, V1.0]
+ *   @since 2018/6/6 11:09
+ *   @author gaoshudian
+ */
+public class Dispatch {
+
+    static class QQ {}
+    static class _360 {}
+
+    public static class Father {
+        public void hardChoice(QQ arg) {
+            System.out.println("father choose qq");
+        }
+        public void hardChoice(_360 arg) {
+            System.out.println("father choose 360");
+        }
+    }
+    public static class Son extends Father {
+        public void hardChoice(QQ arg) {
+            System.out.println("son choose qq");
+        }
+        public void hardChoice(_360 arg) {
+            System.out.println("son choose 360");
+        }
+    }
+    public static void main(String[] args) {
+        Father father = new Father();
+        Father son = new Son();
+        father.hardChoice(new _360());
+        son.hardChoice(new QQ());
+    }
+}

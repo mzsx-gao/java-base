@@ -11,7 +11,7 @@ package com.gao.jvm;
  */
 public class TestAllocation2 {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
         byte[] allocation1 = new byte[1*1024*1024/4];
         byte[] allocation2 = new byte[4*1024*1024];
         byte[] allocation3 = new byte[4*1024*1024];
