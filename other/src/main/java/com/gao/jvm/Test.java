@@ -18,8 +18,9 @@ public class Test {
         List<Object> list = new ArrayList<>();
         list.add("nihao");
         list.add("shudian");
-        System.out.println(Thread.getAllStackTraces());
-        Thread.sleep(1000000);
+        list = null;
+//        System.out.println(Thread.getAllStackTraces());
+//        Thread.sleep(1000000);
     }
 
 }
