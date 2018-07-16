@@ -13,6 +13,7 @@
         <module>multithread</module>
         <module>other</module>
         <module>jdk1.8</module>
+        <module>socket</module>
     </modules>
 
 
