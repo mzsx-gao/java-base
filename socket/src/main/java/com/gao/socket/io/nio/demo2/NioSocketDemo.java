@@ -88,11 +88,11 @@ public class NioSocketDemo {
             ByteBuffer buffer = ByteBuffer.allocate(1024);//1kb
             int readData = channel.read(buffer);
             if (readData > 0) {
-                String msg = new String(buffer.array(), "GBK").trim();// 先讲缓冲区数据转化成byte数组,再转化成String
+                String msg = new String(buffer.array(), "UTF-8").trim();// 先讲缓冲区数据转化成byte数组,再转化成String
                 System.out.println("服务端收到信息：" + msg);
 
                 //回写数据
-                ByteBuffer writeBackBuffer = ByteBuffer.wrap("receive data".getBytes("GBK"));
+                ByteBuffer writeBackBuffer = ByteBuffer.wrap("receive data".getBytes("UTF-8"));
                 channel.write(writeBackBuffer);// 将消息回送给客户端
             } else {
                 System.out.println("客户端关闭咯...");
