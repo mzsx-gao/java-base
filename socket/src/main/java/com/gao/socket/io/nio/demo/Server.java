@@ -30,7 +30,7 @@ public class Server implements Runnable{
 			ssc.register(this.seletor, SelectionKey.OP_ACCEPT);
 			
 			System.out.println("Server start, port :" + port);
-			
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -41,8 +41,13 @@ public class Server implements Runnable{
 		while(true){
 			try {
 				//1 必须要让多路复用器开始监听
-				this.seletor.select();
-				//2 返回多路复用器已经选择的结果集
+                int readyChannels =this.seletor.select();
+                if(readyChannels == 0){
+                    System.out.println("。。。");
+                    continue;
+                }
+                System.out.println("readyChannels.."+readyChannels);
+                //2 返回多路复用器已经选择的结果集
 				Iterator<SelectionKey> keys = this.seletor.selectedKeys().iterator();
 				//3 进行遍历
 				while(keys.hasNext()){
@@ -80,6 +85,7 @@ public class Server implements Runnable{
 
 	private void read(SelectionKey key) {
 		try {
+            System.out.println("read方法...");
 			//1 清空缓冲区旧的数据
 			this.readBuf.clear();
 			//2 获取之前注册的socket通道对象
@@ -112,7 +118,8 @@ public class Server implements Runnable{
 
 	private void accept(SelectionKey key) {
 		try {
-			//1 获取服务通道
+            System.out.println("accept方法...");
+            //1 获取服务通道
 			ServerSocketChannel ssc =  (ServerSocketChannel) key.channel();
 			//2 执行阻塞方法
 			SocketChannel sc = ssc.accept();
