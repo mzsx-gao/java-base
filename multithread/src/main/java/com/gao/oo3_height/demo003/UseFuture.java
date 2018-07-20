@@ -27,8 +27,8 @@ public class UseFuture implements Callable<String>{
 	public static void main(String[] args) throws Exception {
 		String queryStr = "query";
 		//构造FutureTask，并且传入需要真正进行业务逻辑处理的类,该类一定是实现了Callable接口的类
-		FutureTask<String> future = new FutureTask<String>(new UseFuture(queryStr));
-		FutureTask<String> future2 = new FutureTask<String>(new UseFuture(queryStr));
+		FutureTask<String> future = new FutureTask<>(new UseFuture(queryStr));
+		FutureTask<String> future2 = new FutureTask<>(new UseFuture(queryStr));
 		//创建一个固定线程的线程池
 		ExecutorService executor = Executors.newFixedThreadPool(2);
 		//这里提交任务future,则开启线程执行RealData的call()方法执行
