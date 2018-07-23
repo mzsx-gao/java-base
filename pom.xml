@@ -15,6 +15,7 @@
         <module>jdk1.8</module>
         <module>socket</module>
         <module>netty</module>
+        <module>dtd-schema-xml</module>
     </modules>
 
 
