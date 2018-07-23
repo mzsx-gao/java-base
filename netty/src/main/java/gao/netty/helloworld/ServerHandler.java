@@ -5,10 +5,11 @@ import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandlerAdapter;
 
 import java.util.Date;
 
-public class ServerHandler extends ChannelHandlerAdapter {
+public class ServerHandler extends ChannelInboundHandlerAdapter {
 
 
     //channelActive()方法将会在连接被建立并且准备进行通信时被调用

@@ -4,6 +4,7 @@ import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.channel.ChannelPromise;
 import io.netty.util.ReferenceCountUtil;
 
@@ -11,7 +12,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Date;
 
-public class ClientHandler extends ChannelHandlerAdapter{
+public class ClientHandler extends ChannelInboundHandlerAdapter {
 
 
 	@Override

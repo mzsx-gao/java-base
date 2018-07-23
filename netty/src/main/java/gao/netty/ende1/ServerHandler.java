@@ -3,8 +3,9 @@ package gao.netty.ende1;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandlerAdapter;
 
-public class ServerHandler extends ChannelHandlerAdapter {
+public class ServerHandler extends ChannelInboundHandlerAdapter {
 
 
 	@Override
