@@ -26,6 +26,8 @@ public class DateDemo {
     public void testLocalDate(){
         LocalDate today = LocalDate.now();
         System.out.println("今天..."+today);
+        System.out.println("今天的后一天..."+today.plusDays(1));
+
 
         LocalDate crischristmas = LocalDate.of(2017,12,25);
         System.out.println("实例化LocalDate对象..."+crischristmas);

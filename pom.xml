@@ -16,6 +16,7 @@
         <module>socket</module>
         <module>netty</module>
         <module>dtd-schema-xml</module>
+        <module>dbpools</module>
     </modules>
 
 
