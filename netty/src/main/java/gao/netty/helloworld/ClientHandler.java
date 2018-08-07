@@ -17,7 +17,7 @@ public class ClientHandler extends ChannelInboundHandlerAdapter {
 
 	@Override
 	public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        System.out.println(new Date()+"...channelActive...");
+        System.out.println(new Date()+"...client channel active...");
     }
 
 	@Override
@@ -41,8 +41,7 @@ public class ClientHandler extends ChannelInboundHandlerAdapter {
     }
 
 	@Override
-	public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause)
-			throws Exception {
+	public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
 		ctx.close();
 	}
 
