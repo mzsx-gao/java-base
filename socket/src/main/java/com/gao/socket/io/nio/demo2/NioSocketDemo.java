@@ -18,7 +18,7 @@ public class NioSocketDemo {
      * 获得一个ServerSocket通道，并对该通道做一些初始化的工作
      */
     public void initServer(int port) throws IOException {
-        // 获取ServerSocket通道 ， 相对于传统的ServerSocket
+        // 获取ServerSocket通道,相对于传统的ServerSocket
         ServerSocketChannel serverChannel = ServerSocketChannel.open();
         // 设置通道为非阻塞
         serverChannel.configureBlocking(false);
@@ -34,7 +34,7 @@ public class NioSocketDemo {
         serverChannel.register(this.selector, SelectionKey.OP_ACCEPT);
         System.out.println("服务端启动成功...");
 		/*
-		***SelectionKey中定义的4中事件 ***
+		***SelectionKey中定义的4种事件 ***
 		OP_ACCEPT —— 接收连接就绪事件，表示服务器监听到了客户连接，服务器可以接收这个连接了
 		OP_CONNECT —— 连接就绪事件，表示客户与服务器的连接已经建立成功
 		OP_READ —— 读就绪事件，表示通道中已经有了可读的数据，可以执行读操作了（通道目前有数据，可以进行读操作了）
@@ -50,7 +50,7 @@ public class NioSocketDemo {
         // 轮询访问selector
         while (true) {
             // 当注册的事件到达时，方法返回；否则,该方法会一直阻塞
-            // 多路复用  Reactor模型
+            // 多路复用 Reactor模型
             this.selector.select();
             // 无论是否有读写事件发生，selector每隔1s被唤醒一次
             //this.selector.select(1000);

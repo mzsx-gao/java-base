@@ -12,10 +12,8 @@ public class Client {
 		
 		//创建连接的地址
 		InetSocketAddress address = new InetSocketAddress("127.0.0.1", 8765);
-		
 		//声明连接通道
 		SocketChannel sc = null;
-		
 		//建立缓冲区
 		ByteBuffer buf = ByteBuffer.allocate(1024);
 		
@@ -24,7 +22,6 @@ public class Client {
 			sc = SocketChannel.open();
 			//进行连接
 			sc.connect(address);
-			
 			while(true){
 				//定义一个字节数组，然后使用系统录入功能：
 				byte[] bytes = new byte[1024];
@@ -50,7 +47,5 @@ public class Client {
 				}
 			}
 		}
-		
 	}
-	
 }
