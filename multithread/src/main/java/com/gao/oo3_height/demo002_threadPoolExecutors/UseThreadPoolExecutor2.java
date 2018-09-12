@@ -26,7 +26,7 @@ public class UseThreadPoolExecutor2 implements Runnable{
 		//System.out.println(Runtime.getRuntime().availableProcessors());
 		BlockingQueue<Runnable> queue = 
 //				new LinkedBlockingQueue<Runnable>();
-				new ArrayBlockingQueue<Runnable>(10);
+				new ArrayBlockingQueue<>(10);
 		ExecutorService executor  = new ThreadPoolExecutor(
 					5, 		//core
 					10, 	//max
@@ -41,6 +41,4 @@ public class UseThreadPoolExecutor2 implements Runnable{
 		System.out.println("queue size:" + queue.size());		//10
 		Thread.sleep(2000);
 	}
-
-
 }

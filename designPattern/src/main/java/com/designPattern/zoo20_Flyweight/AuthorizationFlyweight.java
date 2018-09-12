@@ -35,4 +35,12 @@ public class AuthorizationFlyweight implements Flyweight{
         }
         return false;
     }
+
+    @Override
+    public String toString() {
+        return "AuthorizationFlyweight{" +
+                "securityEntity='" + securityEntity + '\'' +
+                ", permit='" + permit + '\'' +
+                '}';
+    }
 }

@@ -27,10 +27,7 @@ public class ModifyLock {
 			System.out.println("当前线程 : "  + Thread.currentThread().getName() + " 开始");
 			this.setName(name);
 			this.setAge(age);
-			
-			System.out.println("当前线程 : "  + Thread.currentThread().getName() + " 修改对象内容为： " 
-					+ this.getName() + ", " + this.getAge());
-			
+			System.out.println("当前线程 : "  + Thread.currentThread().getName() + " 修改对象内容为： " + this.getName() + ", " + this.getAge());
 			Thread.sleep(2000);
 			System.out.println("当前线程 : "  + Thread.currentThread().getName() + " 结束");
 		} catch (InterruptedException e) {
@@ -40,25 +37,11 @@ public class ModifyLock {
 	
 	public static void main(String[] args) {
 		final ModifyLock modifyLock = new ModifyLock();
-		Thread t1 = new Thread(new Runnable() {
-			@Override
-			public void run() {
-				modifyLock.changeAttributte("张三", 20);
-			}
-		},"t1");
-		Thread t2 = new Thread(new Runnable() {
-			@Override
-			public void run() {
-				modifyLock.changeAttributte("李四", 21);
-			}
-		},"t2");
-		
+		Thread t1 = new Thread(()->modifyLock.changeAttributte("张三", 20),"t1");
+		Thread t2 = new Thread(()->modifyLock.changeAttributte("李四", 21),"t2");
+
 		t1.start();
-		try {
-			Thread.sleep(100);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		try {Thread.sleep(100);} catch (InterruptedException e) {e.printStackTrace();}
 		t2.start();
 	}
 	

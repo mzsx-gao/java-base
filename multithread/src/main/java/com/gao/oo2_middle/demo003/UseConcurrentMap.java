@@ -1,4 +1,4 @@
-package com.gao.oo2_middle.demo004_queue;
+package com.gao.oo2_middle.demo003;
 
 
 import java.util.Map;
@@ -7,7 +7,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class UseConcurrentMap {
 
 	public static void main(String[] args) {
-		ConcurrentHashMap<String, Object> chm = new ConcurrentHashMap<String, Object>();
+		ConcurrentHashMap<String, Object> chm = new ConcurrentHashMap<>();
 		chm.put("k1", "v1");
 		chm.put("k2", "v2");
 		chm.put("k3", "v3");

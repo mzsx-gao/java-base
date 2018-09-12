@@ -13,7 +13,7 @@ public class Tickets {
 	public static void main(String[] args) {
 		//初始化火车票池并添加火车票:避免线程同步可采用Vector替代ArrayList  HashTable替代HashMap
 		
-		final Vector<String> tickets = new Vector<String>();
+		final Vector<String> tickets = new Vector<>();
 		
 		//Map<String, String> map = Collections.synchronizedMap(new HashMap<String, String>());
 

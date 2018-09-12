@@ -9,7 +9,7 @@ public class Main {
 
 	public static void main(String[] args) throws Exception {
 		//内存缓冲区
-		BlockingQueue<Data> queue = new LinkedBlockingQueue<Data>(10);
+		BlockingQueue<Data> queue = new LinkedBlockingQueue<>(10);
 		//生产者
 		Provider p1 = new Provider(queue);
 		Provider p2 = new Provider(queue);
@@ -42,8 +42,5 @@ public class Main {
 		}		
 //		cachePool.shutdown(); 
 //		cachePool.shutdownNow();
-		
-
 	}
-	
 }

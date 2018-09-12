@@ -4,7 +4,7 @@ import java.util.concurrent.DelayQueue;
 
 public class WangBa implements Runnable {
 
-	private DelayQueue<Wangmin> queue = new DelayQueue<Wangmin>();
+	private DelayQueue<Wangmin> queue = new DelayQueue<>();
 
 	public boolean yinye = true;
 

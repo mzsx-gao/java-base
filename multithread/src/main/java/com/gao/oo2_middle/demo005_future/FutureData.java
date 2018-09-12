@@ -23,6 +23,7 @@ public class FutureData implements Data{
 		//如果没装载好 程序就一直处于阻塞状态
 		while(!isReady){
 			try {
+				System.out.println("等待...");
 				wait();
 			} catch (InterruptedException e) {
 				e.printStackTrace();

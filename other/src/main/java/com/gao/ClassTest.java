@@ -1,13 +1,20 @@
 package com.gao;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by gao on 2018/4/18.
  */
 public class ClassTest {
 
-//    public static void main(String[] args) {
-//        System.out.println("hello world");
-//    }
+    public static void main(String[] args) {
+        System.out.println("hello world");
+
+        Map<Object,String> map = new HashMap<>();
+        map.put(null,"nihao");
+        System.out.println(map.get(null));
+    }
 
     public int add(int a,int b){
         int c =a +b;

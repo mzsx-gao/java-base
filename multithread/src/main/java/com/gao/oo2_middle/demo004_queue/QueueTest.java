@@ -24,7 +24,7 @@ public class QueueTest {
 	// 高性能无阻塞无界队列：ConcurrentLinkedQueue
 	@Test
 	public void concurrentLinkedQueueTest() {
-		ConcurrentLinkedQueue<String> q = new ConcurrentLinkedQueue<String>();
+		ConcurrentLinkedQueue<String> q = new ConcurrentLinkedQueue<>();
 		q.offer("a");
 		q.offer("b");
 		q.offer("c");
@@ -39,23 +39,19 @@ public class QueueTest {
 	// 有界阻塞队列 ArrayBlockingQueue
 	@Test
 	public void arrayBlockingQueueTest() throws InterruptedException {
-		final ArrayBlockingQueue<String> array = new ArrayBlockingQueue<String>(5);
+		final ArrayBlockingQueue<String> array = new ArrayBlockingQueue<>(5);
 		array.put("a");
 		array.put("b");
 		array.add("c");
 		array.add("d");
 		array.add("e");
-		new Thread(new Runnable() {
-			@Override
-			public void run() {
+		new Thread( () -> {
 				try {
 					Thread.sleep(2000);
 					array.poll();
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-
-			}
 		}).start();
 		System.out.println("开始添加f...");
 		array.put("f");
@@ -66,7 +62,7 @@ public class QueueTest {
 	// 阻塞队列 LinkedBlockingQueue（队列容量可指定，可不指定。如果不指定则为‘Integer.MAX_VALUE’）
 	@Test
 	public void linkedBlockingQueue() {
-		LinkedBlockingQueue<String> q = new LinkedBlockingQueue<String>();
+		LinkedBlockingQueue<String> q = new LinkedBlockingQueue<>();
 		q.offer("a");
 		q.offer("b");
 		q.offer("c");
@@ -79,7 +75,7 @@ public class QueueTest {
 			String string = iterator.next();
 			System.out.println(string);
 		}
-		List<String> list = new ArrayList<String>();
+		List<String> list = new ArrayList<>();
 		System.out.println(q.drainTo(list, 3));
 		System.out.println(list.size());
 		for (String string : list) {
@@ -91,32 +87,23 @@ public class QueueTest {
 	// 其中每个插入操作必须等待另一个线程的对应移除操作 ，反之亦然
 	@Test
 	public void synchronousQueueTest() {
-		final SynchronousQueue<String> q = new SynchronousQueue<String>();
-		Thread t1 = new Thread(new Runnable() {
-			@Override
-			public void run() {
-				try {
-					System.out.println(q.take());
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
+		final SynchronousQueue<String> q = new SynchronousQueue<>();
+		Thread t1 = new Thread( () -> {
+			try {
+				System.out.println(q.take());
+			} catch (InterruptedException e) {
+				e.printStackTrace();
 			}
 		});
 		t1.start();
-		Thread t2 = new Thread(new Runnable() {
-
-			@Override
-			public void run() {
-				q.add("asdasd");
-			}
-		});
+		Thread t2 = new Thread( () -> q.add("asdasd"));
 		t2.start();
 	}
 
 	// 基于已链接节点的、任选范围的阻塞双端队列
 	@Test
 	public void linkedBlockingDequeTest() {
-		LinkedBlockingDeque<String> dq = new LinkedBlockingDeque<String>(10);
+		LinkedBlockingDeque<String> dq = new LinkedBlockingDeque<>(10);
 		dq.addFirst("a");
 		dq.addFirst("b");
 		dq.addFirst("c");
@@ -139,7 +126,7 @@ public class QueueTest {
 	// 无界阻塞队列PriorityBlockingQueue 可根据自定义的比较器对元素进行排序
 	@Test
 	public void priorityBlockingQueueTest() throws InterruptedException {
-		PriorityBlockingQueue<Task> q = new PriorityBlockingQueue<Task>();
+		PriorityBlockingQueue<Task> q = new PriorityBlockingQueue<>();
 		Task t1 = new Task();
 		t1.setId(3);
 		t1.setName("id为3");

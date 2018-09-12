@@ -1,13 +1,16 @@
-package com.gao.oo2_middle.demo003;
+package com.gao.oo2_middle.demo004_queue;
 
 import java.util.LinkedList;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
+/*
+  自己实现一个队列
+ */
 public class MyQueue {
 
 	// 1 需要一个承装元素的集合
-	private LinkedList<Object> list = new LinkedList<Object>();
+	private LinkedList<Object> list = new LinkedList<>();
 
 	// 2 需要一个计数器
 	private AtomicInteger count = new AtomicInteger(0);
@@ -79,23 +82,18 @@ public class MyQueue {
 		mq.put("d");
 		mq.put("e");
 		System.out.println("当前容器的长度:" + mq.getSize());
-		Thread t1 = new Thread(new Runnable() {
-			@Override
-			public void run() {
-				mq.put("f");
-				mq.put("g");
-			}
-		}, "t1");
+		Thread t1 = new Thread(()->{
+			mq.put("f");
+			mq.put("g");
+		},"t1");
 		t1.start();
-		Thread t2 = new Thread(new Runnable() {
-			@Override
-			public void run() {
-				Object o1 = mq.take();
-				System.out.println("移除的元素为:" + o1);
-				Object o2 = mq.take();
-				System.out.println("移除的元素为:" + o2);
-			}
-		}, "t2");
+
+		Thread t2 = new Thread(()->{
+			Object o1 = mq.take();
+			System.out.println("移除的元素为:" + o1);
+			Object o2 = mq.take();
+			System.out.println("移除的元素为:" + o2);
+		},"t2");
 		try {
 			TimeUnit.SECONDS.sleep(2);
 		} catch (InterruptedException e) {
@@ -103,5 +101,4 @@ public class MyQueue {
 		}
 		t2.start();
 	}
-
 }

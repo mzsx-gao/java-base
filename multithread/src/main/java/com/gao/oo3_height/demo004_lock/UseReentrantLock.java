@@ -37,12 +37,8 @@ public class UseReentrantLock {
 
 	public static void main(String[] args) {
 		final UseReentrantLock ur = new UseReentrantLock();
-		Thread t1 = new Thread(()->{
-            ur.method1();
-		}, "t1");
-        Thread t2 = new Thread(()->{
-            ur.method2();
-        }, "t2");
+		Thread t1 = new Thread(()-> ur.method1(), "t1");
+		Thread t2 = new Thread(()-> ur.method2(), "t2");
 		t1.start();
 		t2.start();
 		try {
