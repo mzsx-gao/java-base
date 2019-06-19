@@ -75,6 +75,8 @@ public class DateDemo {
 
 
         System.out.println(today.getDayOfWeek());
+
+        System.out.println(today.format(DateTimeFormatter.ofPattern("yyyyMMdd")));
     }
 
     /**
@@ -86,6 +88,7 @@ public class DateDemo {
         //获取LocalTime对象
         LocalTime localTime = LocalTime.now();
         System.out.println("当前时间..."+localTime);
+        System.out.println("当前时间..."+localTime.withNano(0));
 
 //        LocalTime localTime2 = LocalTime.of(18,18,40);
 //        System.out.println("当前时间..."+localTime2);
@@ -104,6 +107,8 @@ public class DateDemo {
         System.out.println("向前推一个小时.."+localTime.minusHours(1));
         System.out.println("向前推一分钟.."+localTime.minusMinutes(1));
         System.out.println("向前推一秒.."+localTime.minusSeconds(1));
+
+        System.out.println(LocalTime.now().format(DateTimeFormatter.ofPattern("HHmmss")));
     }
 
     /**
@@ -114,8 +119,13 @@ public class DateDemo {
 
         //获取当前时间
         LocalDateTime localDateTime = LocalDateTime.now();
-        System.out.println("当前时间..."+localDateTime);
+        System.out.println("当前时间..."+localDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
 
+    }
+
+    public static void main(String[] args) {
+        System.out.println(LocalDate.now().toString());
+        System.out.println(LocalTime.now().toString());
     }
 
 }
