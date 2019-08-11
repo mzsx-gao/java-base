@@ -17,6 +17,8 @@
         <module>netty</module>
         <module>dtd-schema-xml</module>
         <module>dbpools</module>
+        <module>annotation-processor</module>
+        <module>annotation-processor2</module>
     </modules>
 
 
