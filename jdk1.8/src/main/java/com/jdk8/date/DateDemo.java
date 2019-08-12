@@ -120,12 +120,15 @@ public class DateDemo {
         //获取当前时间
         LocalDateTime localDateTime = LocalDateTime.now();
         System.out.println("当前时间..."+localDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+        System.out.println("当前时间..."+localDateTime.minusDays(1).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
 
     }
 
     public static void main(String[] args) {
-        System.out.println(LocalDate.now().toString());
-        System.out.println(LocalTime.now().toString());
+
+        LocalDate crischristmas = LocalDate.of(2019,8,2);
+        LocalDate crischristmas2 = LocalDate.of(2019,12,7);
+        System.out.println("总共差"+ChronoUnit.DAYS.between(crischristmas,crischristmas2)+"天");
     }
 
 }
