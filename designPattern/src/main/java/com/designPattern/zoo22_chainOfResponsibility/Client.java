@@ -1,5 +1,8 @@
 package com.designPattern.zoo22_chainOfResponsibility;
 
+/**
+ * 责任链模式
+ */
 public class Client {
     public static void main(String[] args) {
         //先要组装职责链

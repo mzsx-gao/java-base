@@ -2,7 +2,7 @@ package com.designPattern.zoo17_strategy;
 
 /**
  *   名称: Client.java
- *   描述:
+ *   描述: 策略模式
  *   类型: JAVA
  *   最近修改时间:2018/3/28 10:46
  *   @version [版本号, V1.0]

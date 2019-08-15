@@ -3,7 +3,7 @@ package com.designPattern.zoo22_chainOfResponsibility.origin;
 
 /**
  *   名称: Client.java
- *   描述:
+ *   描述: 责任链模式
  *   类型: JAVA
  *   最近修改时间:2018/4/3 16:58
  *   @version [版本号, V1.0]
