@@ -11,12 +11,12 @@
 
     <artifactId>annotation-processor</artifactId>
 
-    <!--<dependencies>-->
-        <!--<dependency>-->
-            <!--<groupId>com.gao</groupId>-->
-            <!--<artifactId>annotation-processor2</artifactId>-->
-            <!--<version>1.0-SNAPSHOT</version>-->
-        <!--</dependency>-->
-    <!--</dependencies>-->
+    <dependencies>
+        <dependency>
+            <groupId>com.gao</groupId>
+            <artifactId>annotation-processor2</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 </project>
