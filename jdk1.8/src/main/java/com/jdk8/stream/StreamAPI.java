@@ -1,10 +1,8 @@
 package com.jdk8.stream;
 
 import org.junit.Test;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -23,16 +21,11 @@ import java.util.stream.Stream;
 
  终止操作:
      循环 forEach
-     计算 min、max、count、 average
+     计算 min、max、count、 average、sum
      匹配 anyMatch、 allMatch、 noneMatch、 findFirst、 findAny
      汇聚 reduce
      收集器 toArray collect
 
- *   类型: JAVA
- *   最近修改时间:2018/3/27 14:58
- *   @version [版本号, V1.0]
- *   @since 2018/3/27 14:58
- *   @author gaoshudian
  */
 public class StreamAPI {
 
@@ -99,8 +92,8 @@ public class StreamAPI {
 		int sum  = Stream.of(str.split(",")).mapToInt(x -> Integer.valueOf(x)).sum();
 		System.out.println(sum);
 
-//		sum  = Stream.of(str.split(",")).map(x -> Integer.valueOf(x)).mapToInt(x -> x).sum();
-//		System.out.println(sum);
+		sum  = Stream.of(str.split(",")).map(x -> Integer.valueOf(x)).mapToInt(x -> x).sum();
+		System.out.println(sum);
 
 		sum  = Stream.of(str.split(",")).mapToInt(Integer::valueOf).sum();
 		System.out.println(sum);
@@ -134,4 +127,33 @@ public class StreamAPI {
 
         System.out.println(max);
     }
+
+    @Test
+    public void test4(){
+
+        Map<String, String> systems = new LinkedHashMap<>();
+        systems.put("ch.qos.logback.core.Appender", "org.springframework.boot.logging.logback.LogbackLoggingSystem");
+        systems.put("org.apache.logging.log4j.core.impl.Log4jContextFactory",
+                "org.springframework.boot.logging.log4j2.Log4J2LoggingSystem");
+        systems.put("java.util.logging.LogManager", "org.springframework.boot.logging.java.JavaLoggingSystem");
+        Map<String, String> SYSTEMS = Collections.unmodifiableMap(systems);
+        Optional<String> result = SYSTEMS.entrySet().stream()
+                .filter((entry) -> "ch.qos.logback.core.Appender".equals(entry.getKey()))
+                .map((entry) -> "LogbackLoggingSystem").findFirst();
+        System.out.println(result.get());
+
+        List<User> userlist = new ArrayList<>();
+        for (int i = 0; i <10; i++) {
+            userlist.add(new User("张三"+i));
+        }
+        Map<String,String> map =userlist.stream().collect(Collectors.toMap(User::getName,User::getName));
+        System.out.println(map);
+
+    }
+
+    /*
+    return SYSTEMS.entrySet().stream().filter((entry) -> ClassUtils.isPresent(entry.getKey(), classLoader))
+				.map((entry) -> get(classLoader, entry.getValue())).findFirst()
+				.orElseThrow(() -> new IllegalStateException("No suitable logging system located"));
+     */
 }

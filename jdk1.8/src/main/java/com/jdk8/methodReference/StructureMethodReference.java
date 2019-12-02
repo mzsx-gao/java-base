@@ -16,12 +16,6 @@ import java.util.function.Supplier;
  *       如果函数式接口的实现恰好可以通过调用一个类的构造方法来实现，那么就可以使用构造方法引用
  *      语法:
  *          类名::new
- *
- *   类型: JAVA
- *   最近修改时间:2018/3/15 14:24
- *   @version [版本号, V1.0]
- *   @since 2018/3/15 14:24
- *   @author gaoshudian
  */
 public class StructureMethodReference {
 

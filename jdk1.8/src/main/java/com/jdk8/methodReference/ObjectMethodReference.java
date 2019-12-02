@@ -7,22 +7,14 @@ import java.util.function.Consumer;
 
 
 /**
- *   名称: ObjectMethodReference.java
- *   描述:对象方法引用(引用特定类型的任意对象的实例方法)
- *       满足一下两个条件:
- *       1.抽象方法的第一个参数类型刚好是实例方法的类型
- *       2.抽象方法剩余的参数恰好可以当做实例方法的参数。
- *       如果函数式接口的实现能由上面说的实例方法调用来实现的话，那么就可以使用对象方法引用
- *
- *       第一个参数类型 最好是自定义的类型
- *      语法
+ * 描述:对象方法引用(引用特定类型的任意对象的实例方法)
+ *     满足一下两个条件:
+ *     1.抽象方法的第一个参数类型刚好是实例方法的类型
+ *     2.抽象方法剩余的参数恰好可以当做实例方法的参数。
+ *     如果函数式接口的实现能由上面说的实例方法调用来实现的话，那么就可以使用对象方法引用
+ *     第一个参数类型 最好是自定义的类型
+ *    语法
  *          类名::instMethod
- *
- *   类型: JAVA
- *   最近修改时间:2018/3/15 11:42
- *   @version [版本号, V1.0]
- *   @since 2018/3/15 11:42
- *   @author gaoshudian
  */
 public class ObjectMethodReference {
 
@@ -68,14 +60,11 @@ public class ObjectMethodReference {
         //示例4
         Execute ex1 = (p,name,size) -> new Prod().run(name, size);
         Execute ex2 = Prod::run;
-
-
-
     }
 }
 
 interface Execute {
-    public void run(Prod p, String name, String size);
+    void run(Prod p, String name, String size);
 }
 
 class Prod {
