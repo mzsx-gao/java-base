@@ -18,7 +18,8 @@
         <module>dtd-schema-xml</module>
         <module>dbpools</module>
         <module>annotation-processor</module>
-        <module>annotation-processor2</module>
+        <module>annotation-processor-test</module>
+        <module>commons-digester</module>
     </modules>
 
 

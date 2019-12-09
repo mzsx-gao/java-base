@@ -8,9 +8,8 @@ import java.sql.Statement;
 /**
  * 自定义连接数据库管道Bean
  * 重点：原生的Connection上面没有复用的标志
- *     Sam老司机自己封装设计isBusy来解决线程被占用的问题
+ *     老司机自己封装设计isBusy来解决线程被占用的问题
  * 总结：这个思想就封装思想  也就是扩展功能
- * @author Sam
  *
  */
 public class PooledConnection {
