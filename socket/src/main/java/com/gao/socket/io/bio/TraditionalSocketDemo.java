@@ -9,6 +9,7 @@ import java.net.Socket;
  * 传统Socket阻塞案例
  */
 public class TraditionalSocketDemo{
+
 	public static void main(String[] args) throws IOException {
 		ServerSocket serverSocket = new ServerSocket(7777);
 		System.out.println("服务端启动, 端口为：7777");
