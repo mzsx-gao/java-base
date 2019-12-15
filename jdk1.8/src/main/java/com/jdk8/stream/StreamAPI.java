@@ -142,6 +142,7 @@ public class StreamAPI {
                 .map((entry) -> "LogbackLoggingSystem").findFirst();
         System.out.println(result.get());
 
+        //list转map
         List<User> userlist = new ArrayList<>();
         for (int i = 0; i <10; i++) {
             userlist.add(new User("张三"+i));
