@@ -20,6 +20,7 @@
         <module>annotation-processor</module>
         <module>annotation-processor-test</module>
         <module>commons-digester</module>
+        <module>log-demo</module>
     </modules>
 
 
