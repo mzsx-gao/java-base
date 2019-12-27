@@ -3,6 +3,7 @@ package com.jdk8.stream;
 import org.junit.Test;
 
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -69,6 +70,37 @@ public class StreamAPI {
 
     }
 
+    //测试Stream.map()方法
+    @Test
+    public void mapTest(){
+
+        String str = "tomcat,nginx,apahce,jetty";
+
+//        Stream.of(str.split(",")).map(new Function<String, Object>() {
+//            public Person apply(String t){
+//                return Person.build(t);
+//            }
+//        }).forEach(System.out::println);
+//		Stream.of(str.split(",")).map(x -> Person.build(x)).forEach(System.out::println);
+        Stream.of(str.split(",")).map(Person::build).forEach(System.out::println);
+
+
+//		Stream.of(str.split(",")).map(x -> new User(x)).forEach(System.out::println);
+        Stream.of(str.split(",")).map(User::new).forEach(System.out::println);
+
+
+        //把下列字符串分割，依次转换成int，然后求和
+        String str2 = "11,22,33,44,55";
+        int sum  = Stream.of(str2.split(",")).mapToInt(x -> Integer.valueOf(x)).sum();
+        System.out.println(sum);
+
+        sum  = Stream.of(str2.split(",")).map(x -> Integer.valueOf(x)).mapToInt(x -> x).sum();
+        System.out.println(sum);
+
+        sum  = Stream.of(str2.split(",")).mapToInt(Integer::valueOf).sum();
+        System.out.println(sum);
+    }
+
 
     @Test
     public void test2(){
@@ -87,27 +119,11 @@ public class StreamAPI {
                 (Collectors.toList());
 		System.out.println(list2);
 
-        //把下列字符串分割，依次转换成int，然后求和
-		String str = "11,22,33,44,55";
-		int sum  = Stream.of(str.split(",")).mapToInt(x -> Integer.valueOf(x)).sum();
-		System.out.println(sum);
-
-		sum  = Stream.of(str.split(",")).map(x -> Integer.valueOf(x)).mapToInt(x -> x).sum();
-		System.out.println(sum);
-
-		sum  = Stream.of(str.split(",")).mapToInt(Integer::valueOf).sum();
-		System.out.println(sum);
-
-
-		String str2 = "tomcat,nginx,apahce,jetty";
-//		Stream.of(str2.split(",")).map(x -> new User(x)).forEach(System.out::println);
-		Stream.of(str2.split(",")).map(User::new).forEach(System.out::println);
-//		Stream.of(str2.split(",")).map(x -> Person.build(x)).forEach(System.out::println);
-		Stream.of(str2.split(",")).map(Person::build).forEach(System.out::println);
 
         String str3 = "11,22,33,44,55";
         int sum3  = Stream.of(str3.split(",")).peek(System.out::println).mapToInt(Integer::valueOf).sum();
         System.out.println(sum3);
+
     }
 
     //并行stream
