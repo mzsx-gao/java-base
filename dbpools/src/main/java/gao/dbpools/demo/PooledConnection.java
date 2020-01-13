@@ -13,6 +13,7 @@ import java.sql.Statement;
  *
  */
 public class PooledConnection {
+
     //表示繁忙的标志   复用的标志 线程安全
     private boolean isBusy = false;
     
@@ -63,9 +64,6 @@ public class PooledConnection {
 
     @Override
     public String toString() {
-        return "PooledConnection{" +
-                "isBusy=" + isBusy +
-                ", connection=" + connection +
-                '}';
+        return "PooledConnection{" + "isBusy=" + isBusy + ", connection=" + connection + '}';
     }
 }

@@ -12,6 +12,7 @@ package gao.dbpools.demo;
  * ClaasLoader
  */
 public class PoolManager {
+
     private static class createPool {
         private static MyPoolImpl poolImpl = new MyPoolImpl();
     }

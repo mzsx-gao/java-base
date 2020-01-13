@@ -65,7 +65,7 @@ public class MyPoolImpl implements IMyPool {
         try {
             Class.forName(driver);
             //创建连接对象 管理起来 设计创建行为合法性判断
-//            DriverManager.getConnection(url, user, password);
+            DriverManager.getConnection(url, user, password);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -78,7 +78,7 @@ public class MyPoolImpl implements IMyPool {
     //高竞争状态的业务场景
     @Override
     public PooledConnection getConnection() {
-        System.out.println("目前连接池的数量为..."+pooledConnections.size());
+        System.out.println("目前连接池的数量为..." + pooledConnections.size());
         if (pooledConnections.size() == 0) {
             //Spring当中的设计思想 补刀机制 代码的高可用
             System.out.println("数据库连接池没有正常初始化，将启动补刀机制再次初始化........");
@@ -111,7 +111,7 @@ public class MyPoolImpl implements IMyPool {
             //是否被线程占用
             if (!conn.isBusy()) {
                 Connection connection = conn.getConnection();
-                System.out.println("得到连接。。。"+conn);
+                System.out.println("得到连接。。。" + conn);
                 //connection是否没有超时
                 try {
                     if (!connection.isValid(2000)) {
@@ -143,7 +143,7 @@ public class MyPoolImpl implements IMyPool {
                     e.printStackTrace();
                 }
             }
-        }else{
+        } else {
             System.out.println("创建失败，连接数超过最大值！");
         }
         if (pooledConnections.size() == 0) {

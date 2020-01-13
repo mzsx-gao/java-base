@@ -7,6 +7,7 @@ import java.sql.SQLException;
  * 检验产品是否成功
  */
 public class MypoolTest {
+
     // 拿到连接池对象
     private static MyPoolImpl orcl = PoolManager.getInstace();
     
@@ -15,13 +16,12 @@ public class MypoolTest {
      */
     public synchronized static void selctData() {
         PooledConnection connection = orcl.getConnection();
-        ResultSet rs = connection.queryBysql("SELECT * FROM test");
+        ResultSet rs = connection.queryBysql("SELECT * FROM book");
         System.out.println("线程名称： " + Thread.currentThread().getName());
         try {
             while (rs.next()) {
                 System.out.print(rs.getString("id") + "\t\t");
-                System.out.print(rs.getString("name") + "\t\t");
-                System.out.print(rs.getString("age") + "\t\t");
+                System.out.print(rs.getString("isbn") + "\t\t");
                 System.out.println();
             }
             //复用功能没有了
@@ -38,7 +38,6 @@ public class MypoolTest {
         for (int i = 0; i < 100; i++) {
             new Thread(()->selctData()).start();
         }
-
     }
     
 }
