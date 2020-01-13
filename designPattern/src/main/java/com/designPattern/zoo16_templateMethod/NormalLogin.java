@@ -1,14 +1,6 @@
 package com.designPattern.zoo16_templateMethod;
 
-/**
- *   名称: NormalLogin.java
- *   描述:
- *   类型: JAVA
- *   最近修改时间:2018/3/27 18:00
- *   @version [版本号, V1.0]
- *   @since 2018/3/27 18:00
- *   @author gaoshudian
- */
+
 public class NormalLogin extends LoginTemplate{
 
     public LoginModel findLoginUser(String loginId) {

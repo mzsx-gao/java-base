@@ -1,8 +1,11 @@
 package com.designPattern.zoo11_observer;
 
+import lombok.Data;
+
 /**
  * 真正的读者，为了简单就描述一下姓名
  */
+@Data
 public class Reader implements Observer {
 
 	 /**
@@ -15,12 +18,4 @@ public class Reader implements Observer {
        System.out.println(name+"收到报纸了，阅读先。内容是==="+((NewsPaper)subject).getContent());
     }
  
-
-    public String getName() {
-       return name;
-    }
-    public void setName(String name) {
-       this.name = name;
-    }
-
 }

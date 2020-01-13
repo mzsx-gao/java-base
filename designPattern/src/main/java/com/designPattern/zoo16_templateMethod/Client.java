@@ -1,13 +1,7 @@
 package com.designPattern.zoo16_templateMethod;
 
 /**
- *   名称: Client.java
- *   描述:
- *   类型: JAVA
- *   最近修改时间:2018/3/27 18:01
- *   @version [版本号, V1.0]
- *   @since 2018/3/27 18:01
- *   @author gaoshudian
+ * 模板方法模式
  */
 public class Client {
 

@@ -5,6 +5,7 @@ public class Client {
 	public static void main(String[] args) {
 	   //创建一个报纸，作为被观察者
        NewsPaper subject = new NewsPaper();
+
        //创建阅读者，也就是观察者
        Reader reader1 = new Reader();
        reader1.setName("张三");

@@ -8,7 +8,8 @@ package com.designPattern.oo6_abstract_factory;
 public interface AbstractFactory {
 
 	//创建CPU的对象
-	public CPUApi createCPUApi();
+	CPUApi createCPUApi();
+
 	//创建主板的对象
-	public MainboardApi createMainboardApi();
+	MainboardApi createMainboardApi();
 }

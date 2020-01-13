@@ -18,6 +18,7 @@ public abstract class Decorator extends Component{
     public Decorator(Component c){
         this.c = c;
     }
+
     @Override
     public double calcPrize(String user, Date begin, Date end) {
         //转调组件对象的方法
