@@ -129,6 +129,7 @@ public class DateDemo {
         LocalDate crischristmas = LocalDate.of(2019,8,2);
         LocalDate crischristmas2 = LocalDate.of(2019,12,7);
         System.out.println("总共差"+ChronoUnit.DAYS.between(crischristmas,crischristmas2)+"天");
+
     }
 
 }
