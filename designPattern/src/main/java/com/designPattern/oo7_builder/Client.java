@@ -13,14 +13,12 @@ public class Client {
 		ehm.setDeptId("一分公司");
 		ehm.setExportDate("2010-05-18");
 
-		Map<String, Collection<ExportDataModel>> mapData = new HashMap<String, Collection<ExportDataModel>>();
-		Collection<ExportDataModel> col = new ArrayList<ExportDataModel>();
-
+		Map<String, Collection<ExportDataModel>> mapData = new HashMap<>();
+		Collection<ExportDataModel> col = new ArrayList<>();
 		ExportDataModel edm1 = new ExportDataModel();
 		edm1.setProductId("产品001号");
 		edm1.setPrice(100d);
 		edm1.setAmount(80d);
-
 		ExportDataModel edm2 = new ExportDataModel();
 		edm2.setProductId("产品002号");
 		edm2.setPrice(99d);
@@ -40,6 +38,7 @@ public class Client {
 		director.construct(ehm, mapData, efm);
 		// 把要输出的内容输出到控制台看看
 		System.out.println("输出到文本文件的内容：\n" + txtBuilder.getResult());
+
 		// 测试输出到xml文件
 		XmlBuilder xmlBuilder = new XmlBuilder();
 		Director director2 = new Director(xmlBuilder);

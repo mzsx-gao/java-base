@@ -14,7 +14,7 @@ public interface Builder {
 	 * @param ehm
 	 *            文件头的内容
 	 */
-	public void buildHeader(ExportHeaderModel ehm);
+	void buildHeader(ExportHeaderModel ehm);
 
 	/**
 	 * 构建输出文件的Body部分
@@ -22,7 +22,7 @@ public interface Builder {
 	 * @param mapData
 	 *            要输出的数据的内容
 	 */
-	public void buildBody(Map<String, Collection<ExportDataModel>> mapData);
+	void buildBody(Map<String, Collection<ExportDataModel>> mapData);
 
 	/**
 	 * 构建输出文件的Footer部分
@@ -30,6 +30,6 @@ public interface Builder {
 	 * @param efm
 	 *            文件尾的内容
 	 */
-	public void buildFooter(ExportFooterModel efm);
+	void buildFooter(ExportFooterModel efm);
 
 }
