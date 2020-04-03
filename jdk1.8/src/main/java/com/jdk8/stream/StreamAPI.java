@@ -152,6 +152,7 @@ public class StreamAPI {
         systems.put("org.apache.logging.log4j.core.impl.Log4jContextFactory",
                 "org.springframework.boot.logging.log4j2.Log4J2LoggingSystem");
         systems.put("java.util.logging.LogManager", "org.springframework.boot.logging.java.JavaLoggingSystem");
+
         Map<String, String> SYSTEMS = Collections.unmodifiableMap(systems);
         Optional<String> result = SYSTEMS.entrySet().stream()
                 .filter((entry) -> "ch.qos.logback.core.Appender".equals(entry.getKey()))
