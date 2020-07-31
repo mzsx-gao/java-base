@@ -43,7 +43,7 @@ public class ObjectMethodReference {
                 too2.fo(s);
             }
         };
-        BiConsumer<Too2, String> c5 = (too2, str) -> new Too2().fo(str);
+        BiConsumer<Too2, String> c5 = (too2, str) -> too2.fo(str);
         BiConsumer<Too2, String> c6 = Too2::fo;
 
         //示例3
