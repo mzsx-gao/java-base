@@ -13,8 +13,8 @@
         <module>multithread</module>
         <module>other</module>
         <module>jdk1.8</module>
-        <module>socket</module>
-        <module>netty</module>
+        <module>network/netty</module>
+        <module>network/socket</module>
         <module>dtd-schema-xml</module>
         <module>dbpools</module>
         <module>annotation-processor</module>
