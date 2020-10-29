@@ -21,7 +21,6 @@ public class NioClient implements Runnable{
 
         // 客户端连接服务器,其实方法执行并没有实现连接，需要在listen（）方法中调用channel.finishConnect()才能完成连接
         channel.connect(new InetSocketAddress(port));
-        //注册OP_CONNECT事件
         channel.register(selector, SelectionKey.OP_CONNECT);
     }
 
