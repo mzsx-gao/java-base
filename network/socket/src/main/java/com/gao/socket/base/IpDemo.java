@@ -1,4 +1,4 @@
-package com.gao.socket.base.ip;
+package com.gao.socket.base;
 
 import org.junit.Test;
 

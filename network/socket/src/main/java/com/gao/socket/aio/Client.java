@@ -1,4 +1,4 @@
-package com.gao.socket.io.aio;
+package com.gao.socket.aio;
 
 import java.io.UnsupportedEncodingException;
 import java.net.InetSocketAddress;

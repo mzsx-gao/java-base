@@ -1,4 +1,4 @@
-package com.gao.socket.io.nio.demo;
+package com.gao.socket.nio.helloworld;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -9,13 +9,13 @@ import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
 import java.util.Iterator;
 
-public class Server implements Runnable{
+public class NioServer implements Runnable{
 	//1 多路复用器（管理所有的通道）
 	private Selector seletor;
 	//2 建立读缓冲区
 	private ByteBuffer readBuf = ByteBuffer.allocate(1024);
 
-	public Server(int port){
+	public NioServer(int port){
 		try {
 			//1 打开多路复用器
 			this.seletor = Selector.open();
@@ -27,7 +27,7 @@ public class Server implements Runnable{
 			ssc.bind(new InetSocketAddress(port));
 			//5 把服务器通道注册到多路复用器上，并且"OP_ACCEPT(接收连接)"事件
 			ssc.register(this.seletor, SelectionKey.OP_ACCEPT);
-			System.out.println("Server start, port :" + port);
+			System.out.println("NioServer start, port :" + port);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -62,7 +62,7 @@ public class Server implements Runnable{
 	private void handleInput(SelectionKey key) throws IOException {
 		//7 如果为"OP_ACCEPT"事件,处理新接入的客户端的请求
 		if(key.isAcceptable()){
-			System.out.println("server端accept方法...");
+			System.out.println("server...接收到连接");
 			//1 获取关心当前事件的Channel(服务端通道)
 			ServerSocketChannel ssc =  (ServerSocketChannel) key.channel();
 			//2 接受连接，获取一个SocketChannel
@@ -74,7 +74,6 @@ public class Server implements Runnable{
 		}
 		//8 如果为“OP_READ”事件,处理对端发送的数据
 		if(key.isReadable()){
-			System.out.println("server端read方法...");
 			//1 清空缓冲区旧的数据
 			this.readBuf.clear();
 			//2 获取之前注册的SocketChannel通道对象
@@ -90,11 +89,11 @@ public class Server implements Runnable{
 				this.readBuf.get(bytes);
 				//8 打印结果
 				String body = new String(bytes).trim();
-				System.out.println("Server端收到的数据 : " + body);
+				System.out.println("Server...收到数据 : " + body);
 				// 9..可以写回给客户端数据
 				returnToClient(sc);
 			}else{
-				key.cancel();
+				key.cancel();//不再关注该事件
 				sc.close();
 			}
 		}
@@ -102,8 +101,7 @@ public class Server implements Runnable{
 
     //响应客户端数据
     private void returnToClient(SocketChannel sc) throws IOException {
-		String response = "服务端返回给客户端数据";
-		byte[] respbytes = response.getBytes();
+		byte[] respbytes = "response data".getBytes();
 		ByteBuffer buffer = ByteBuffer.allocate(respbytes.length);
 		buffer.put(respbytes);
 		buffer.flip();
@@ -112,6 +110,6 @@ public class Server implements Runnable{
 	}
 
 	public static void main(String[] args) {
-		new Thread(new Server(8765)).start();
+		new Thread(new NioServer(8765)).start();
 	}
 }

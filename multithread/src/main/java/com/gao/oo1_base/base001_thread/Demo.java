@@ -4,7 +4,7 @@ public class Demo {
 	
 	public void finalize()
 	{
-		System.out.println("demo ok");
+		System.out.println("helloworld ok");
 	}
 
 }

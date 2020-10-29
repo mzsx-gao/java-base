@@ -1,4 +1,4 @@
-package com.gao.socket.io.nio.demo;
+package com.gao.socket.nio;
 
 import org.junit.Test;
 import java.nio.IntBuffer;

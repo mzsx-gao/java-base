@@ -1,4 +1,4 @@
-package com.gao.socket.io.aio;
+package com.gao.socket.aio;
 
 import java.net.InetSocketAddress;
 import java.nio.channels.AsynchronousChannelGroup;

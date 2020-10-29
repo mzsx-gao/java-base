@@ -1,4 +1,4 @@
-package com.gao.socket.io.bio;
+package com.gao.socket.bio;
 
 import java.io.IOException;
 import java.io.InputStream;
