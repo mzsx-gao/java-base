@@ -10,17 +10,19 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>designPattern</module>
-        <module>multithread</module>
+        <module>concurrent-demo/multithread-base</module>
         <module>other</module>
         <module>jdk1.8</module>
-        <module>network/netty</module>
-        <module>network/socket</module>
+        <module>network/netty-basic</module>
+        <module>network/socket-base</module>
         <module>dtd-schema-xml</module>
         <module>dbpools</module>
-        <module>annotation-processor</module>
-        <module>annotation-processor-test</module>
+        <module>annotationprocessor/annotation-processor</module>
+        <module>annotationprocessor/annotation-processor-test</module>
         <module>commons-digester</module>
         <module>log-demo</module>
+        <module>concurrent-demo/concurrent</module>
+        <module>network/netty-http</module>
     </modules>
 
 
