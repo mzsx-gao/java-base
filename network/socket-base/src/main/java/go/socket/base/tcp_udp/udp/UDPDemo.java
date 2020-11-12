@@ -1,4 +1,4 @@
-package go.socket.base.base.udp;
+package go.socket.base.tcp_udp.udp;
 
 import org.junit.Test;
 import java.net.DatagramPacket;
@@ -59,7 +59,7 @@ public class UDPDemo {
         //使用DatagramPacket将数据封装到的该对象包中。
         byte[] buf = str.getBytes();
 
-        DatagramPacket dp = new DatagramPacket(buf,buf.length, InetAddress.getByName("172.16.36.102"),10000);
+        DatagramPacket dp = new DatagramPacket(buf,buf.length, InetAddress.getByName("localhost"),10000);
 
         //3，通过udp的socket服务将数据包发送出去。使用send方法。
         ds.send(dp);

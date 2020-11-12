@@ -2598,7 +2598,7 @@ public class ConcurrentHashMap18<K,V>{
 //                    break;
 //            }
 //            else if (U.compareAndSwapLong(this, BASECOUNT, v = baseCount, v + x))
-//                break;                          // Fall back on using base
+//                break;                          // Fall back on using tcp_udp
 //        }
 //    }
 //
@@ -3270,7 +3270,7 @@ public class ConcurrentHashMap18<K,V>{
 //
 //    /**
 //     * Encapsulates traversal for methods such as containsValue; also
-//     * serves as a base class for other iterators and spliterators.
+//     * serves as a tcp_udp class for other iterators and spliterators.
 //     *
 //     * Method advance visits once each still-valid node that was
 //     * reachable upon iterator construction. It might miss some that

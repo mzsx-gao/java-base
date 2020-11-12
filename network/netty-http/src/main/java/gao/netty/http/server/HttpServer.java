@@ -13,9 +13,9 @@ import io.netty.handler.ssl.util.SelfSignedCertificate;
  * http服务端
  */
 public class HttpServer {
-    public static final int port = 6789; //设置服务端端口
-    private static EventLoopGroup group = new NioEventLoopGroup();   // 通过nio方式来接收连接和处理连接
     private static ServerBootstrap b = new ServerBootstrap();
+    private static EventLoopGroup group = new NioEventLoopGroup();   // 通过nio方式来接收连接和处理连接
+    public static final int port = 6789; //设置服务端端口
     private static final boolean SSL = false;/*是否开启SSL模式*/
 
     /**
@@ -27,7 +27,6 @@ public class HttpServer {
         if(SSL){
             SelfSignedCertificate ssc = new SelfSignedCertificate();
             sslCtx = SslContextBuilder.forServer(ssc.certificate(), ssc.privateKey()).build();
-
         }else{
             sslCtx = null;
         }

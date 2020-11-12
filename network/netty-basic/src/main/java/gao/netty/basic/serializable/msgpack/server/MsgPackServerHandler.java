@@ -1,5 +1,6 @@
-package gao.netty.basic.serializable.msgpack;
+package gao.netty.basic.serializable.msgpack.server;
 
+import gao.netty.basic.serializable.msgpack.User;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;

@@ -1,4 +1,4 @@
-package go.socket.base.base;
+package go.socket.base.tcp_udp;
 
 import org.junit.Test;
 

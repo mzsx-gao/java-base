@@ -1,5 +1,6 @@
-package gao.netty.basic.serializable.msgpack;
+package gao.netty.basic.serializable.msgpack.client;
 
+import gao.netty.basic.serializable.msgpack.User;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToByteEncoder;

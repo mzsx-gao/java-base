@@ -22,7 +22,7 @@ public class FileUrlClassLoader extends URLClassLoader {
 
 
     public static void main(String[] args) throws ClassNotFoundException, MalformedURLException {
-        String rootDir="/Users/gao/work/developer/workspace/github-workspace/java-base/other/src/main/java/com/gao/jvm/classLoader";
+        String rootDir="/Users/gao/work/developer/workspace/github-workspace/java-tcp_udp/other/src/main/java/com/gao/jvm/classLoader";
         //创建自定义文件类加载器
         File file = new File(rootDir);
         //File to URI

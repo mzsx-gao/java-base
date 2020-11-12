@@ -9,11 +9,6 @@ import io.netty.util.CharsetUtil;
 
 import java.net.URI;
 
-/**
- * @author Mark老师   享学课堂 https://enjoy.ke.qq.com
- * 往期课程和VIP课程咨询 依娜老师  QQ：2133576719
- * 类说明：
- */
 public class HttpClientInboundHandler extends ChannelInboundHandlerAdapter {
 
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
@@ -37,10 +32,8 @@ public class HttpClientInboundHandler extends ChannelInboundHandlerAdapter {
 
         // 构建http请求
         request.headers().set(HttpHeaderNames.HOST, HttpClient.HOST);
-        request.headers().set(HttpHeaderNames.CONNECTION,
-                HttpHeaderValues.KEEP_ALIVE);
-        request.headers().set(HttpHeaderNames.CONTENT_LENGTH,
-                request.content().readableBytes());
+        request.headers().set(HttpHeaderNames.CONNECTION, HttpHeaderValues.KEEP_ALIVE);
+        request.headers().set(HttpHeaderNames.CONTENT_LENGTH, request.content().readableBytes());
         // 发送http请求
         ctx.writeAndFlush(request);
     }

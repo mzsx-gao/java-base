@@ -1,4 +1,4 @@
-package go.socket.base.base.udp;
+package go.socket.base.tcp_udp.udp;
 
 import org.junit.Test;
 import java.io.BufferedReader;
@@ -60,7 +60,7 @@ public class UDPDemo2 {
         String line;
         while((line=bufr.readLine())!=null){
             byte[] buf = line.getBytes();
-            DatagramPacket dp = new DatagramPacket(buf,buf.length,InetAddress.getByName("172.16.36.102"),10000);
+            DatagramPacket dp = new DatagramPacket(buf,buf.length,InetAddress.getByName("localhost"),10000);
             ds.send(dp);
             if("886".equals(line))
                 break;

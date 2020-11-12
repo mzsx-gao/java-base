@@ -1,5 +1,7 @@
-package gao.netty.basic.serializable.msgpack;
+package gao.netty.basic.serializable.msgpack.client;
 
+import gao.netty.basic.serializable.msgpack.User;
+import gao.netty.basic.serializable.msgpack.UserContact;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
@@ -51,8 +53,7 @@ public class MsgPackClientHandler extends SimpleChannelInboundHandler<ByteBuf> {
             String userName = "ABCDEFG --->"+i;
             user.setUserName(userName);
             user.setId("No:"+(sendNumber-i));
-            user.setUserContact(
-                    new UserContact(userName+"@xiangxue.com","133"));
+            user.setUserContact(new UserContact(userName+"@xiangxue.com","133"));
             users[i]=user;
         }
         return users;

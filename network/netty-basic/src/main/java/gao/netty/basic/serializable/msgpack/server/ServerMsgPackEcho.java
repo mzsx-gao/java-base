@@ -1,4 +1,4 @@
-package gao.netty.basic.serializable.msgpack;
+package gao.netty.basic.serializable.msgpack.server;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;

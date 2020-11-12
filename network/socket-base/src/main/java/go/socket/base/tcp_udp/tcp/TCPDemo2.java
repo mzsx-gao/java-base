@@ -1,13 +1,14 @@
-package go.socket.base.base.tcp;
+package go.socket.base.tcp_udp.tcp;
 
 import org.junit.Test;
+
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
 
-public class TCPDemo {
+public class TCPDemo2 {
 
     /*
 	 建立tcp服务端的思路：
@@ -22,21 +23,18 @@ public class TCPDemo {
 
         //1创建服务端对象。
         ServerSocket ss = new ServerSocket(10002);
-
         //2,获取连接过来的客户端对象。
-        Socket s = ss.accept();//阻塞式.
-
+        Socket s = ss.accept();
         String ip = s.getInetAddress().getHostAddress();
-
         //3，通过socket对象获取输入流，要读取客户端发来的数据
         InputStream in = s.getInputStream();
-
         byte[] buf = new byte[1024];
-
         int len = in.read(buf);
         String text = new String(buf,0,len);
         System.out.println(ip+":"+text);
-
+        //使用客户端socket对象的输出流给客户端返回数据
+        OutputStream out = s.getOutputStream();
+        out.write("收到".getBytes());
         s.close();
         ss.close();
     }
@@ -51,15 +49,15 @@ public class TCPDemo {
 	*/
     @Test
     public void client() throws Exception{
-        //创建客户端socket服务。
         Socket socket = new Socket("172.16.36.102",10002);
-
-        //获取socket流中的输出流。
         OutputStream out = socket.getOutputStream();
-
-        //使用输出流将指定的数据写出去。
         out.write("tcp演示：哥们又来了!".getBytes());
-
+        //读取服务端返回的数据,使用socket读取流。
+        InputStream in = socket.getInputStream();
+        byte[] buf = new byte[1024];
+        int len = in.read(buf);
+        String  text = new String(buf,0,len);
+        System.out.println(text);
         //关闭资源。
         socket.close();
     }

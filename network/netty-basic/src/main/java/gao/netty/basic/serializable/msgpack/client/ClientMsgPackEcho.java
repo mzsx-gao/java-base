@@ -1,5 +1,6 @@
-package gao.netty.basic.serializable.msgpack;
+package gao.netty.basic.serializable.msgpack.client;
 
+import gao.netty.basic.serializable.msgpack.server.ServerMsgPackEcho;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
