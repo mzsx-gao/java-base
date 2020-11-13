@@ -7,11 +7,11 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 
-public class ReceDemo {
+public class Zhangsan {
 
 	public static void main(String[] args) throws IOException {
 
-		System.out.println("我是美女，正在和帅哥聊天....");
+		System.out.println("我是张三，正在和李四聊天....");
 		DatagramSocket rece = new DatagramSocket(10001);
 		new Thread(new MsgRece(rece)).start();
 

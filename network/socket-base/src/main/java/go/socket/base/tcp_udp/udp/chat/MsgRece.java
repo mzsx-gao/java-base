@@ -26,14 +26,20 @@ public class MsgRece implements Runnable {
                 String ip = dp.getAddress().getHostAddress();
                 int port = dp.getPort();
                 String text = new String(dp.getData(), 0, dp.getLength());
-                System.out.println("                             " + port + "发消息::  " + text);
+                String name;
+                if(port==8888){
+                    name="李四";
+                }else{
+                    name="张三";
+                }
+                System.err.println(name +"::  " + text);
                 if (text.equals("886")) {
-                    System.out.println(ip + "....退出聊天室");
+                    System.err.println(ip + "....退出聊天室");
+                    break;
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
 }

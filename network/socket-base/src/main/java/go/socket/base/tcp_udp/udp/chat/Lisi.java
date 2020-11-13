@@ -7,11 +7,11 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 
-public class SendDemo {
+public class Lisi {
 
     public static void main(String[] args) throws IOException {
 
-        System.out.println("我是帅哥，正在和美女聊天....");
+        System.out.println("我是李四，正在和张三聊天....");
         DatagramSocket send = new DatagramSocket(8888);
 
         new Thread(new MsgRece(send)).start();
