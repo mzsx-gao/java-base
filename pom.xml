@@ -11,7 +11,6 @@
     <modules>
         <module>designPattern</module>
         <module>concurrent-demo/multithread-base</module>
-        <module>other</module>
         <module>jdk1.8</module>
         <module>network/netty-basic</module>
         <module>network/socket-base</module>
