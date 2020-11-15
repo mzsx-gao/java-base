@@ -23,6 +23,10 @@
         <module>log-demo</module>
         <module>concurrent-demo/concurrent</module>
         <module>network/netty-http</module>
+        <module>network/springboot-stomp</module>
+        <module>network/springboot-websocket</module>
+        <module>network/netty-websocket</module>
+        <module>network/netty-adv</module>
     </modules>
 
 
