@@ -12,9 +12,7 @@ import org.slf4j.LoggerFactory;
 import java.util.Locale;
 
 /**
- * @author Mark老师   享学课堂 https://enjoy.ke.qq.com
- * 往期课程和VIP课程咨询 依娜老师  QQ：2133576719
- * 类说明：对websocket的数据进行处理
+ *  类说明：对websocket的数据进行处理
  */
 public class ProcesssWsFrameHandler
         extends SimpleChannelInboundHandler<WebSocketFrame> {
@@ -27,6 +25,7 @@ public class ProcesssWsFrameHandler
 
     private static final Logger logger
             = LoggerFactory.getLogger(ProcesssWsFrameHandler.class);
+
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx,

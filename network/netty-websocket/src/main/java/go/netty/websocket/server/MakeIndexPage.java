@@ -5,8 +5,7 @@ import io.netty.buffer.Unpooled;
 import io.netty.util.CharsetUtil;
 
 /**
- * @author Mark老师   享学课堂 https://enjoy.ke.qq.com
- * 类说明：生成index页面的内容
+ *  类说明：生成index页面的内容
  */
 public final class MakeIndexPage {
 
