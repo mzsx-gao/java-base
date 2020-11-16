@@ -44,6 +44,7 @@ public class LineBaseEchoServer {
 
         @Override
         protected void initChannel(Channel ch) throws Exception {
+            //以换行符分割字节流的解码器
             ch.pipeline().addLast(new LineBasedFrameDecoder(1024));
             ch.pipeline().addLast(new LineBaseServerHandler());
         }
