@@ -1,7 +1,7 @@
 package go.stomp.web;
 
-import cn.enjoyedu.stomp.domain.ChatRoomRequest;
-import cn.enjoyedu.stomp.domain.ChatRoomResponse;
+import go.stomp.domain.ChatRoomRequest;
+import go.stomp.domain.ChatRoomResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
@@ -9,10 +9,8 @@ import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 
 /*
- *  *@author Mark老师   享学课堂 https://enjoy.ke.qq.com
- *  *类说明：在线聊天室
+ * 在线聊天室后端实现
  */
-
 @Controller
 public class StompController {
 
@@ -21,6 +19,7 @@ public class StompController {
 
     /*消息群发，接受发送至自massRequest的请求*/
     @MessageMapping("/massRequest")
+    //@SendTo可以实现处理业务后，向订阅了/mass/getResponse地址的客户端发送消息
     @SendTo("/mass/getResponse")
     public ChatRoomResponse mass(ChatRoomRequest chatRoomRequest){
         System.out.println("name = " + chatRoomRequest.getName());
@@ -40,8 +39,8 @@ public class StompController {
         ChatRoomResponse response=new ChatRoomResponse();
         response.setName(chatRoomRequest.getName());
         response.setChatValue(chatRoomRequest.getChatValue());
-        this.template.convertAndSendToUser(chatRoomRequest.getUserId()+"",
-                "/alone",response);
+        //最终的访问路径类似于:/user/james/alone,其中的/user是在WebSocketConfig中设置的前缀
+        this.template.convertAndSendToUser(chatRoomRequest.getUserId()+"", "/alone",response);
         return response;
     }
 }
