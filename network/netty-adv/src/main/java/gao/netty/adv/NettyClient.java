@@ -20,16 +20,14 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author Mark老师   享学课堂 https://enjoy.ke.qq.com
  * 类说明：Netty客户端的主入口
  */
-public class NettyClient implements Runnable{
+public class NettyClient implements Runnable {
 
     private static final Log LOG = LogFactory.getLog(NettyClient.class);
 
     /*负责重连的线程池*/
-    private ScheduledExecutorService executor = Executors
-            .newScheduledThreadPool(1);
+    private ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
     private Channel channel;
     private EventLoopGroup group = new NioEventLoopGroup();
 
@@ -44,43 +42,39 @@ public class NettyClient implements Runnable{
     }
 
     /*连接服务器*/
-    public void connect(int port,String host) throws InterruptedException {
+    public void connect(int port, String host) throws InterruptedException {
         try {
             /*客户端启动必备*/
             Bootstrap b = new Bootstrap();
-            b.group(group)
-                    .channel(NioSocketChannel.class)/*指定使用NIO的通信模式*/
-            .handler(new ClientInit());
-            ChannelFuture future = b.connect(new InetSocketAddress(host,port)).sync();
+            b.group(group).channel(NioSocketChannel.class)/*指定使用NIO的通信模式*/
+                    .handler(new ClientInit());
+            ChannelFuture future = b.connect(new InetSocketAddress(host, port)).sync();
             channel = future.sync().channel();
-            synchronized (this){
+            synchronized (this) {
                 this.connected = true;
                 this.notifyAll();
             }
+            //等待服务端监听端口关闭
             future.channel().closeFuture().sync();
         } finally {
-            if(!userClose){
+            if (!userClose) {
                 /*非正常关闭，有可能发生了网络问题，进行重连*/
                 System.out.println("需要进行重连");
-                executor.execute(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            /*给操作系统足够的时间，去释放相关的资源*/
-                            TimeUnit.SECONDS.sleep(1);
-                            connect(NettyConstant.SERVER_PORT,
-                                    NettyConstant.SERVER_IP);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
+                executor.execute(()-> {
+                    try {
+                        /*给操作系统足够的时间，去释放相关的资源*/
+                        TimeUnit.SECONDS.sleep(1);
+                        connect(NettyConstant.SERVER_PORT, NettyConstant.SERVER_IP);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
                     }
                 });
 
-            }else{
+            } else {
                 /*正常关闭*/
                 channel = null;
                 group.shutdownGracefully().sync();
-                synchronized (this){
+                synchronized (this) {
                     this.connected = false;
                     this.notifyAll();
                 }
@@ -91,24 +85,16 @@ public class NettyClient implements Runnable{
     @Override
     public void run() {
         try {
-            connect(NettyConstant.SERVER_PORT,NettyConstant.SERVER_IP);
+            connect(NettyConstant.SERVER_PORT, NettyConstant.SERVER_IP);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
 
-    /*------------测试NettyClient--------------------------*/
-    public static void main(String[] args) throws Exception {
-//        NettyClient nettyClient = new NettyClient();
-//        nettyClient.connect(NettyConstant.REMOTE_PORT
-//                , NettyConstant.REMOTE_IP);
-    }
-
     /*------------以下方法供业务方使用--------------------------*/
     public void send(Object message) {
-        if(channel==null||!channel.isActive()){
-            throw new IllegalStateException("和服务器还未未建立起有效连接！" +
-                    "请稍后再试！！");
+        if (channel == null || !channel.isActive()) {
+            throw new IllegalStateException("和服务器还未未建立起有效连接！" + "请稍后再试！！");
         }
         MyMessage msg = new MyMessage();
         MyHeader myHeader = new MyHeader();
@@ -122,6 +108,5 @@ public class NettyClient implements Runnable{
         userClose = true;
         channel.close();
     }
-
 
 }

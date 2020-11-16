@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author Mark老师   享学课堂 https://enjoy.ke.qq.com
  * 类说明：消息头
  */
 public final class MyHeader {
@@ -25,7 +24,7 @@ public final class MyHeader {
     private byte priority;
 
     /*消息头额外附件*/
-    private Map<String, Object> attachment = new HashMap<String, Object>();
+    private Map<String, Object> attachment = new HashMap<>();
 
     public final int getCrcCode() {
     	return crcCode;
