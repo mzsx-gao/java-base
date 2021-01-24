@@ -12,9 +12,8 @@ import java.util.function.Consumer;
  *     1.抽象方法的第一个参数类型刚好是实例方法的类型
  *     2.抽象方法剩余的参数恰好可以当做实例方法的参数。
  *     如果函数式接口的实现能由上面说的实例方法调用来实现的话，那么就可以使用对象方法引用
- *     第一个参数类型 最好是自定义的类型
- *    语法
- *          类名::instMethod
+ * 语法:
+ *    类名::instMethod
  */
 public class ObjectMethodReference {
 
