@@ -27,7 +27,7 @@ public class NioClientHandle implements Runnable{
         try {
             /*创建选择器的实例*/
             selector = Selector.open();
-            /*创建ServerSocketChannel的实例*/
+            /*创建SocketChannel的实例*/
             socketChannel = SocketChannel.open();
             /*设置通道为非阻塞模式*/
             socketChannel.configureBlocking(false);
@@ -134,20 +134,6 @@ public class NioClientHandle implements Runnable{
         }
     }
 
-    private void doWrite(SocketChannel channel,String request) throws IOException {
-        //将消息编码为字节数组
-        byte[] bytes = request.getBytes();
-        //根据数组容量创建ByteBuffer
-        ByteBuffer writeBuffer = ByteBuffer.allocate(bytes.length);
-        //将字节数组复制到缓冲区
-        writeBuffer.put(bytes);
-        //flip操作
-        writeBuffer.flip();
-        //发送缓冲区的字节数组
-        /*关心事件和读写网络并不冲突*/
-        channel.write(writeBuffer);
-    }
-
     private void doConnect() throws IOException{
         /*非阻塞的连接*/
         if(socketChannel.connect(new InetSocketAddress(host,port))){
@@ -162,5 +148,17 @@ public class NioClientHandle implements Runnable{
         doWrite(socketChannel, msg);
     }
 
-
+    private void doWrite(SocketChannel channel,String request) throws IOException {
+        //将消息编码为字节数组
+        byte[] bytes = request.getBytes();
+        //根据数组容量创建ByteBuffer
+        ByteBuffer writeBuffer = ByteBuffer.allocate(bytes.length);
+        //将字节数组复制到缓冲区
+        writeBuffer.put(bytes);
+        //flip操作
+        writeBuffer.flip();
+        //发送缓冲区的字节数组
+        /*关心事件和读写网络并不冲突*/
+        channel.write(writeBuffer);
+    }
 }

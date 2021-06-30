@@ -101,7 +101,11 @@ public class NioServerHandle implements Runnable{
                     doWrite(sc,result);
 
                 }else if(readBytes<0){
-                    /*取消特定的注册关系*/
+                    /**
+                    * 取消特定的注册关系:
+                    * 取消的键不会立即从 selector 中移除,而是添加到 cancelledKeys 中,在下一次 select 操作时移除它.
+                    * 所以在调用某个 key 时,需要使用 isValid 进行 校验
+                    */
                     key.cancel();
                     /*关闭通道*/
                     sc.close();

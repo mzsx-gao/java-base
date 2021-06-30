@@ -39,5 +39,4 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
 	public void exceptionCaught(ChannelHandlerContext ctx, Throwable t) throws Exception {
 		ctx.close();
 	}
-
 }
