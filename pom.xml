@@ -14,18 +14,19 @@
         <module>jdk1.8</module>
         <module>network/netty-basic</module>
         <module>network/socket-base</module>
-        <module>dtd-schema-xml</module>
-        <module>dbpools</module>
+        <module>other/dtd-schema-xml</module>
+        <module>other/dbpools</module>
         <module>annotationprocessor/annotation-processor</module>
         <module>annotationprocessor/annotation-processor-test</module>
-        <module>commons-digester</module>
-        <module>log-demo</module>
+        <module>other/commons-digester</module>
+        <module>other/log-demo</module>
         <module>concurrent-demo/concurrent</module>
         <module>network/netty-http</module>
         <module>network/springboot-stomp</module>
         <module>network/springboot-websocket</module>
         <module>network/netty-websocket</module>
         <module>network/netty-adv</module>
+        <module>jvm-demo</module>
     </modules>
 
 
