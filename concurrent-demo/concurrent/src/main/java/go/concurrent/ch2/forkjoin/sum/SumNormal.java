@@ -1,6 +1,6 @@
 package go.concurrent.ch2.forkjoin.sum;
 
-import cn.enjoyedu.tools.SleepTools;
+import go.concurrent.tools.SleepTools;
 
 /**
  * 单线程执行累加

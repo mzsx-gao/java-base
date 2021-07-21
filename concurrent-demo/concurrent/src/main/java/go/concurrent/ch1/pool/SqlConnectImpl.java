@@ -1,6 +1,6 @@
 package go.concurrent.ch1.pool;
 
-import cn.enjoyedu.tools.SleepTools;
+import go.concurrent.tools.SleepTools;
 
 import java.sql.*;
 import java.util.Map;

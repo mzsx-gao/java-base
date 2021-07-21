@@ -1,6 +1,6 @@
 package go.concurrent.ch9.semantics;
 
-import cn.enjoyedu.tools.SleepTools;
+import go.concurrent.tools.SleepTools;
 
 /**
  * 类说明：演示锁的内存语义

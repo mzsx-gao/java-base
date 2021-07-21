@@ -1,6 +1,6 @@
 package go.concurrent.ch4.aqs;
 
-import cn.enjoyedu.tools.SleepTools;
+import go.concurrent.tools.SleepTools;
 
 import java.util.concurrent.locks.Lock;
 

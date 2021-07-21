@@ -1,6 +1,6 @@
 package go.concurrent.ch2.tools.semaphore;
 
-import cn.enjoyedu.tools.SleepTools;
+import go.concurrent.tools.SleepTools;
 
 import java.sql.Connection;
 import java.util.LinkedList;

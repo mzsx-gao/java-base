@@ -1,6 +1,6 @@
 package go.concurrent.ch8a.vo;
 
-import cn.enjoyedu.ch8a.CheckJobProcesser;
+import go.concurrent.ch8a.CheckJobProcesser;
 
 import java.util.LinkedList;
 import java.util.List;

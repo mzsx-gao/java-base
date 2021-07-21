@@ -1,8 +1,8 @@
 package go.concurrent.ch7.tranfer;
 
 
-import cn.enjoyedu.ch7.tranfer.service.ITransfer;
-import cn.enjoyedu.ch7.tranfer.service.SafeOperateToo;
+import go.concurrent.ch7.tranfer.service.ITransfer;
+import go.concurrent.ch7.tranfer.service.SafeOperateToo;
 
 /**
  *@author Mark老师   享学课堂 https://enjoy.ke.qq.com 

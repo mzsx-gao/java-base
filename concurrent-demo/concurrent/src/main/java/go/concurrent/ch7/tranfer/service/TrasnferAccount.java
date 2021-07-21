@@ -1,6 +1,7 @@
 package go.concurrent.ch7.tranfer.service;
 
-import cn.enjoyedu.ch7.tranfer.UserAccount;
+
+import go.concurrent.ch7.tranfer.UserAccount;
 
 /**
  *类说明：不安全的转账动作的实现

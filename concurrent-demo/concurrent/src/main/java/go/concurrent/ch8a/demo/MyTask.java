@@ -1,9 +1,9 @@
 package go.concurrent.ch8a.demo;
 
-import cn.enjoyedu.ch8a.vo.ITaskProcesser;
-import cn.enjoyedu.ch8a.vo.TaskResult;
-import cn.enjoyedu.ch8a.vo.TaskResultType;
-import cn.enjoyedu.tools.SleepTools;
+import go.concurrent.ch8a.vo.ITaskProcesser;
+import go.concurrent.ch8a.vo.TaskResult;
+import go.concurrent.ch8a.vo.TaskResultType;
+import go.concurrent.tools.SleepTools;
 
 import java.util.Random;
 

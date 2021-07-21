@@ -1,7 +1,7 @@
 package go.concurrent.ch1.base.safeend;
 
 /**
- *类说明：阻塞方法中抛出InterruptedException异常后，如果需要继续中断，需要手动再中断一次
+ * 阻塞方法中抛出InterruptedException异常后，会将isInterrupted()设置为false,如果需要继续中断，需要手动再中断一次
  */
 public class HasInterrputException {
 	
@@ -19,7 +19,7 @@ public class HasInterrputException {
 				} catch (InterruptedException e) {
 					System.out.println(Thread.currentThread().getName()
 							+" in InterruptedException interrupt flag is " +isInterrupted());
-					//资源释放
+					//手动中断，资源释放
 					interrupt();
 					e.printStackTrace();
 				}
@@ -34,8 +34,5 @@ public class HasInterrputException {
 		endThread.start();
 		Thread.sleep(5000);
 		endThread.interrupt();
-		
-
 	}
-
 }

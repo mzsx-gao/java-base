@@ -1,6 +1,6 @@
 package go.concurrent.ch2.forkjoin.sort;
 
-import cn.enjoyedu.ch2.forkjoin.sum.MakeArray;
+import go.concurrent.ch2.forkjoin.sum.MakeArray;
 
 import java.util.Arrays;
 

@@ -1,9 +1,9 @@
 package go.concurrent.ch8a;
 
-import cn.enjoyedu.ch8a.vo.ITaskProcesser;
-import cn.enjoyedu.ch8a.vo.JobInfo;
-import cn.enjoyedu.ch8a.vo.TaskResult;
-import cn.enjoyedu.ch8a.vo.TaskResultType;
+import go.concurrent.ch8a.vo.ITaskProcesser;
+import go.concurrent.ch8a.vo.JobInfo;
+import go.concurrent.ch8a.vo.TaskResult;
+import go.concurrent.ch8a.vo.TaskResultType;
 
 import java.util.List;
 import java.util.Map;

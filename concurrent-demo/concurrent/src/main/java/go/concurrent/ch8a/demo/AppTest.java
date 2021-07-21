@@ -1,8 +1,8 @@
 package go.concurrent.ch8a.demo;
 
-import cn.enjoyedu.ch8a.PendingJobPool;
-import cn.enjoyedu.ch8a.vo.TaskResult;
-import cn.enjoyedu.tools.SleepTools;
+import go.concurrent.ch8a.PendingJobPool;
+import go.concurrent.ch8a.vo.TaskResult;
+import go.concurrent.tools.SleepTools;
 
 import java.util.List;
 import java.util.Random;

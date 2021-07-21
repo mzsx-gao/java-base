@@ -1,6 +1,6 @@
 package go.concurrent.ch4.rw;
 
-import cn.enjoyedu.tools.SleepTools;
+import go.concurrent.tools.SleepTools;
 
 /**
  *类说明：用内置锁来实现商品服务接口

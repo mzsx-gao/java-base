@@ -1,8 +1,8 @@
 package go.concurrent.ch8a;
 
 
-import cn.enjoyedu.ch5.bq.ItemVo;
-import cn.enjoyedu.ch8a.vo.JobInfo;
+import go.concurrent.ch5.bq.ItemVo;
+import go.concurrent.ch8a.vo.JobInfo;
 
 import java.util.Map;
 import java.util.concurrent.DelayQueue;

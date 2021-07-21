@@ -1,6 +1,6 @@
 package go.concurrent.ch2.forkjoin.sum;
 
-import cn.enjoyedu.tools.SleepTools;
+import go.concurrent.tools.SleepTools;
 
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveTask;

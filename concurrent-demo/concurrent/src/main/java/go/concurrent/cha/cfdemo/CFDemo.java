@@ -1,6 +1,6 @@
 package go.concurrent.cha.cfdemo;
 
-import cn.enjoyedu.tools.SleepTools;
+import go.concurrent.tools.SleepTools;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;

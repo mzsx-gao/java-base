@@ -25,7 +25,7 @@ import java.net.URI;
 /**
  这是WebSocket客户端的示例。
  要运行此示例，需要兼容的WebSocket服务器。
- 因此，可以通过运行cn.enjoyedu.server.WebSocketServer来启动WebSocket服务器，
+ 因此，可以通过运行go.concurrent.server.WebSocketServer来启动WebSocket服务器，
  */
 public final class WebSocketClient {
 

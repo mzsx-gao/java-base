@@ -1,6 +1,6 @@
 package go.concurrent.ch4.rw;
 
-import cn.enjoyedu.tools.SleepTools;
+import go.concurrent.tools.SleepTools;
 
 import java.util.Random;
 

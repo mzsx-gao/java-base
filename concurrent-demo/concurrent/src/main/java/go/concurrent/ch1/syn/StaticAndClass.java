@@ -1,6 +1,6 @@
 package go.concurrent.ch1.syn;
 
-import cn.enjoyedu.tools.SleepTools;
+import go.concurrent.tools.SleepTools;
 
 /**
  *类说明：类锁和锁static变量也是不同的

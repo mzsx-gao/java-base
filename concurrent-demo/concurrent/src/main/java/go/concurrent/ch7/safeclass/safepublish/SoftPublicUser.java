@@ -1,6 +1,6 @@
 package go.concurrent.ch7.safeclass.safepublish;
 
-import cn.enjoyedu.ch7.safeclass.UserVo;
+import go.concurrent.ch7.safeclass.UserVo;
 
 /**
  * 仿Collections对容器的包装，将内部成员对象进行线程安全包装

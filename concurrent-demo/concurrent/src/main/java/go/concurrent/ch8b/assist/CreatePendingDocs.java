@@ -1,6 +1,6 @@
 package go.concurrent.ch8b.assist;
 
-import cn.enjoyedu.ch8b.vo.SrcDocVo;
+import go.concurrent.ch8b.vo.SrcDocVo;
 
 import java.util.LinkedList;
 import java.util.List;

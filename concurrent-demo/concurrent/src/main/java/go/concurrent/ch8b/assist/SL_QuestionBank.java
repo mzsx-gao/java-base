@@ -1,6 +1,6 @@
 package go.concurrent.ch8b.assist;
 
-import cn.enjoyedu.ch8b.vo.QuestionInDBVo;
+import go.concurrent.ch8b.vo.QuestionInDBVo;
 
 import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;

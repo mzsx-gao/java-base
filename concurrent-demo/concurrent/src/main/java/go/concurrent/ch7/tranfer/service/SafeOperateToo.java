@@ -1,6 +1,6 @@
 package go.concurrent.ch7.tranfer.service;
 
-import cn.enjoyedu.ch7.tranfer.UserAccount;
+import go.concurrent.ch7.tranfer.UserAccount;
 
 import java.util.Random;
 

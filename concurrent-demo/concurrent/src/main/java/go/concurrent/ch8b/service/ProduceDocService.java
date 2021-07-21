@@ -1,10 +1,10 @@
 package go.concurrent.ch8b.service;
 
-import cn.enjoyedu.ch8b.assist.SL_Busi;
-import cn.enjoyedu.ch8b.service.question.ParallelQstService;
-import cn.enjoyedu.ch8b.service.question.SingleQstService;
-import cn.enjoyedu.ch8b.vo.SrcDocVo;
-import cn.enjoyedu.ch8b.vo.TaskResultVo;
+import go.concurrent.ch8b.assist.SL_Busi;
+import go.concurrent.ch8b.service.question.ParallelQstService;
+import go.concurrent.ch8b.service.question.SingleQstService;
+import go.concurrent.ch8b.vo.SrcDocVo;
+import go.concurrent.ch8b.vo.TaskResultVo;
 
 import java.util.HashMap;
 import java.util.Map;

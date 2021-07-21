@@ -1,6 +1,6 @@
 package go.concurrent.cha.cfdemo.flow;
 
-import cn.enjoyedu.tools.SleepTools;
+import go.concurrent.tools.SleepTools;
 
 import java.util.concurrent.CompletableFuture;
 

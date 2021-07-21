@@ -1,5 +1,6 @@
 package go.concurrent.ch8b.assist;
 
+
 import org.apache.commons.lang.StringUtils;
 
 import java.security.DigestException;

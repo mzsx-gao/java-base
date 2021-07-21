@@ -1,6 +1,6 @@
 package go.concurrent.ch1.threadlocal;
 
-import cn.enjoyedu.tools.SleepTools;
+import go.concurrent.tools.SleepTools;
 
 /**
  * 类说明：ThreadLocal的线程不安全演示

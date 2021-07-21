@@ -1,6 +1,6 @@
 package go.concurrent.ch6.schd;
 
-import cn.enjoyedu.tools.SleepTools;
+import go.concurrent.tools.SleepTools;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

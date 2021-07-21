@@ -1,6 +1,6 @@
 package go.concurrent.ch1.syn;
 
-import cn.enjoyedu.tools.SleepTools;
+import go.concurrent.tools.SleepTools;
 
 /**
  *类说明：锁的实例不一样，也是可以并行的
