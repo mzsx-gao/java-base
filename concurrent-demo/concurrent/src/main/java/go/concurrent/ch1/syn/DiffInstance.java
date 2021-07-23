@@ -16,7 +16,7 @@ public class DiffInstance {
 
         @Override
         public void run() {
-            System.out.println("TestInstance is running..."+ diffInstance);
+            System.out.println("InstanceSyn is running..."+ diffInstance);
             diffInstance.instance();
         }
     }
@@ -29,7 +29,7 @@ public class DiffInstance {
         }
         @Override
         public void run() {
-            System.out.println("TestInstance2 is running..."+ diffInstance);
+            System.out.println("Instance2Syn is running..."+ diffInstance);
             diffInstance.instance2();
         }
     }

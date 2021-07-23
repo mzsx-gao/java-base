@@ -24,11 +24,12 @@ public class InstanceAndClass {
 
         @Override
         public void run() {
-            System.out.println("TestInstance is running..."+SynClassAndInstance);
+            System.out.println("InstanceSyn is running..."+SynClassAndInstance);
             SynClassAndInstance.instance();
         }
     }
 
+    //实例锁
     private synchronized void instance(){
         SleepTools.second(1);
         System.out.println("synInstance is going..."+this.toString());
@@ -36,6 +37,7 @@ public class InstanceAndClass {
         System.out.println("synInstance ended "+this.toString());
     }
 
+    //类锁
     private static synchronized void synClass(){
         SleepTools.second(1);
         System.out.println("synClass going...");
@@ -44,8 +46,8 @@ public class InstanceAndClass {
     }
 
     public static void main(String[] args) {
-        InstanceAndClass synClassAndInstance = new InstanceAndClass();
         Thread t1 = new SynClass();
+        InstanceAndClass synClassAndInstance = new InstanceAndClass();
         Thread t2 = new Thread(new InstanceSyn(synClassAndInstance));
         t2.start();
         SleepTools.second(1);
