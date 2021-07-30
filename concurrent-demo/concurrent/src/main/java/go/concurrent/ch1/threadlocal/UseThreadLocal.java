@@ -41,8 +41,7 @@ public class UseThreadLocal {
             Integer s = intLocal.get();
             s = s+id;
             intLocal.set(s);
-            System.out.println(Thread.currentThread().getName()
-                    +":"+ intLocal.get());
+            System.out.println(Thread.currentThread().getName() +":"+ intLocal.get());
             //intLocal.remove();
         }
     }

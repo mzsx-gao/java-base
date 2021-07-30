@@ -29,8 +29,8 @@ public class TestWN {
         for(int i=0;i<3;i++){
             new CheckKm().start();
         }
-
         Thread.sleep(1000);
         express.changeKm();//快递地点变化
+//        express.changeSite();//快递地点变化
     }
 }

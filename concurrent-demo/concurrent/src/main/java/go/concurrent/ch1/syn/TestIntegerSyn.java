@@ -26,22 +26,16 @@ public class TestIntegerSyn {
         public void run() {
             synchronized (o) {
                 Thread thread=Thread.currentThread();
-                System.out.println(thread.getName()+"--@"
-                        +System.identityHashCode(i));
+                System.out.println(thread.getName()+"--@" +System.identityHashCode(i));
                 i++;
-                System.out.println(thread.getName()+"-------"+i+"-@"
-                        +System.identityHashCode(i));
+                System.out.println(thread.getName()+"-------"+i+"-@" +System.identityHashCode(i));
                 try {
-                    Thread.sleep(3000);
+                    Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                System.out.println(thread.getName()+"-------"+i+"--@"
-                        +System.identityHashCode(i));
+                System.out.println(thread.getName()+"-------"+i+"--@" +System.identityHashCode(i));
             }
-
         }
-
     }
-
 }
