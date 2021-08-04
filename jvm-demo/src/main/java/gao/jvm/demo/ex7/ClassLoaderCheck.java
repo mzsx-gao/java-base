@@ -1,6 +1,7 @@
 package gao.jvm.demo.ex7;
 
-import others.KingClassLoader;
+
+import gao.jvm.demo.others.KingClassLoader;
 
 public class ClassLoaderCheck {
     public static void main(String[] args) throws Exception {

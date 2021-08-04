@@ -1,6 +1,7 @@
 package gao.jvm.demo.ex9.stream;
 
-import ex9.stream.test.Student;
+
+import gao.jvm.demo.ex9.stream.test.Student;
 
 import java.util.*;
 import java.util.stream.Collectors;
