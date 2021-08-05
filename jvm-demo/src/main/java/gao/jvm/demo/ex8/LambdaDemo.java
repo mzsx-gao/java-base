@@ -1,6 +1,5 @@
 package gao.jvm.demo.ex8;
 /**
- * @author 【享学课堂】 King老师
  * Lambda表达式字节码查看
  **/
 public class LambdaDemo {

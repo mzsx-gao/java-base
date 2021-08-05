@@ -14,6 +14,7 @@ public class LambdaCapture {
         };
         new Thread(r).start();
     }
+
     public static void repeatMessage() {//非捕获型
         Runnable r = () -> {
                 System.out.println("hello king!");
