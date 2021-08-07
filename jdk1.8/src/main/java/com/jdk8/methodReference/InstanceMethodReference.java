@@ -39,9 +39,8 @@ public class InstanceMethodReference {
 
         Consumer<Integer> c1 = (size) -> new InstanceMethodReference().con(size);
         Consumer<Integer> c2 = new InstanceMethodReference()::con;
-        Consumer<Integer> c3 = new InstanceMethodReference()::con;
+        c1.accept(100);
         c2.accept(100);
-        c3.accept(100);
 
         Function<String, String> f3 = str -> exam.toUpper(str);
         Function<String, String> f4 = exam::toUpper;

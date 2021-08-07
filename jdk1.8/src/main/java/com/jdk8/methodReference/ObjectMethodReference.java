@@ -24,7 +24,7 @@ public class ObjectMethodReference {
         Consumer<Too> c = new Consumer<Too>() {
             @Override
             public void accept(Too too) {
-
+                too.foo();
             }
         };
         Consumer<Too> c1 = (Too too) -> new Too().foo();
