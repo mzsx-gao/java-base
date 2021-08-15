@@ -1,0 +1,56 @@
+package go.concurrent.wait_notify;
+
+import lombok.extern.slf4j.Slf4j;
+
+
+/**
+ * 1、什么是对象头？
+ * 什么是对象？内存级别而言来研究什么是对象
+ */
+@Slf4j(topic = "enjoy")
+public class Test2 {
+    static boolean isPrettyGril = false;
+    static Object key = new Object();
+
+    public static void main(String[] args) throws InterruptedException {
+        //jack
+        new Thread(() -> {
+            synchronized (key) {
+                log.debug("有没有女人[{}]", isPrettyGril);
+                if (!isPrettyGril) {
+                    log.debug("没有女人！等女人");
+                    try {
+                        key.wait();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                log.debug("老板把我叫醒了 有没有女人？[{}]", isPrettyGril);
+                if (isPrettyGril) {
+                    log.debug("------男女搭配干活不累；啪啪啪写完了代码");
+                } else {
+                    log.debug("------下班回家----");
+                }
+            }
+        }, "jack").start();
+
+
+        for (int i = 0; i < 10; i++) {
+            new Thread(() -> {
+                synchronized (key) {
+                    log.debug("我们10个屌丝工作了");
+                }
+            }, "其它人").start();
+        }
+
+
+        Thread.sleep(1000);
+        new Thread(() -> {
+            synchronized (key) {
+                isPrettyGril = true;
+                log.debug("桥本有菜来了");
+                key.notify();
+            }
+        }, "boss").start();
+    }
+}
