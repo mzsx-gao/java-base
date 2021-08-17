@@ -27,7 +27,22 @@
         <module>network/netty-websocket</module>
         <module>network/netty-adv</module>
         <module>jvm-demo</module>
+        <module>concurrent-demo/synchronized-demo</module>
     </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.1.7</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.10</version>
+        </dependency>
+    </dependencies>
 
 
     <build>
