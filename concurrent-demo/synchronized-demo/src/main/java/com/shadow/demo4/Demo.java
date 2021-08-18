@@ -6,13 +6,10 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j(topic = "enjoy")
 public class Demo{
 
-
-
-
     public synchronized void test1(){
         log.debug(Thread.currentThread().getName() + " test1 start...");
         try {
-            //睡眠5s 由于还要t2要执行 cpu回去执行t2
+            //睡眠10s 由于还要t2要执行 cpu回去执行t2
             Thread.sleep(10000);
         } catch (InterruptedException e) {
             e.printStackTrace();

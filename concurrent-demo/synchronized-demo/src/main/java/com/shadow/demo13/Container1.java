@@ -18,18 +18,19 @@ public class Container1 {
 
     List lists = new ArrayList();
 
-    public void add(Object o){
+    public void add(Object o) {
         lists.add(o);
     }
 
-    public int size(){
+    public int size() {
         return lists.size();
     }
 
     public static void main(String[] args) {
+
         Container1 c = new Container1();
 
-        new Thread(()->{
+        new Thread(() -> {
             for (int i = 0; i < 10; i++) {
                 c.add(new Object());
                 log.debug("add " + i);
@@ -40,9 +41,9 @@ public class Container1 {
                     e.printStackTrace();
                 }
             }
-        }," t1").start();
+        }, " t1").start();
 
-        new Thread(()->{
+        new Thread(() -> {
             while (true) {
                 if (c.size() == 5) {
                     break;
@@ -51,5 +52,4 @@ public class Container1 {
             log.debug("t2线程结束");
         }, "t2").start();
     }
-
 }

@@ -1,4 +1,5 @@
 package com.shadow.demo6;
+
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.concurrent.TimeUnit;
@@ -8,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 @Slf4j(topic = "enjoy")
 public class Demo {
 
-    synchronized void test1(){
+    synchronized void test1() {
         log.debug("test1 start.........");
         try {
             TimeUnit.SECONDS.sleep(1);
@@ -20,10 +21,10 @@ public class Demo {
 
     /**
      * 为什么test2还需要加sync
-     *
+     * <p>
      * 他本身就包含在test1 而test1已经加了sync
      */
-    synchronized void test2(){
+    synchronized void test2() {
         try {
             TimeUnit.SECONDS.sleep(2);
         } catch (InterruptedException e) {
@@ -32,10 +33,8 @@ public class Demo {
         log.debug("test2 start.......");
     }
 
-
-
     public static void main(String[] args) {
-        Demo demo= new Demo();
+        Demo demo = new Demo();
         demo.test1();
     }
 

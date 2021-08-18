@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 @Slf4j(topic = "enjoy")
 public class Demo {
 
-    synchronized void test(){
+    synchronized void test() {
         log.debug("demo test start........");
         try {
             TimeUnit.SECONDS.sleep(1);
@@ -19,15 +19,16 @@ public class Demo {
     }
 
     public static void main(String[] args) {
-            new Demo2().test();
+        new Demo2().test();
     }
 
 }
+
 @Slf4j(topic = "enjoy")
 class Demo2 extends Demo {
 
     @Override
-    synchronized void test(){
+    synchronized void test() {
         log.debug("demo2 test start........");
         super.test();
         log.debug("demo2 test end........");

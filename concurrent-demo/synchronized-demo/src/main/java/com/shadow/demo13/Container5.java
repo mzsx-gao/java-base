@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
  * 一道面试题：实现一个容器，提供两个方法，add,size
  * 写两个线程，线程1添加10个元素到容器中，线程2实现监控元素的个数，
  * 当个数到5个时，线程2给出提示并结束
- *
+ * <p>
  * CountDownLatch
  * 使用await和countdown方法替代wait和notify
  * CountDownLatch不涉及锁定，当count的值为零时当前线程继续运行
@@ -23,11 +23,11 @@ public class Container5 {
 
     volatile List lists = new ArrayList();
 
-    public void add(Object o){
+    public void add(Object o) {
         lists.add(o);
     }
 
-    public int size(){
+    public int size() {
         return lists.size();
     }
 
@@ -37,7 +37,7 @@ public class Container5 {
         CountDownLatch latch = new CountDownLatch(1);
 
         String s = new String("XXXXX");
-        new Thread(()->{
+        new Thread(() -> {
             log.debug("t2启动");
             if (c.size() != 5) {
                 try {
@@ -48,9 +48,9 @@ public class Container5 {
                 }
                 log.debug("t2结束");
             }
-        }," t2").start();
+        }, " t2").start();
 
-        new Thread(()->{
+        new Thread(() -> {
             log.debug("t1启动");
             for (int i = 0; i < 10; i++) {
                 c.add(new Object());
@@ -66,5 +66,4 @@ public class Container5 {
             }
         }, "t1").start();
     }
-
 }

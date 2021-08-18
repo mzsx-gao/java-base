@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
  * 一道面试题：实现一个容器，提供两个方法，add,size
  * 写两个线程，线程1添加10个元素到容器中，线程2实现监控元素的个数，当个数到5个时，
  * 线程2给出提示并结束
- *
+ * <p>
  * 这里虽然T2能够及时收到消息唤醒，但是wait会释放锁，notify不会释放锁，所以T1线程结束后
  * T2线程才执行完成
  */
@@ -19,11 +19,11 @@ public class Container3 {
 
     volatile List lists = new ArrayList();
 
-    public void add(Object o){
+    public void add(Object o) {
         lists.add(o);
     }
 
-    public int size(){
+    public int size() {
         return lists.size();
     }
 
@@ -31,7 +31,7 @@ public class Container3 {
         Container3 c = new Container3();
         Object lock = new Object();
 
-        new Thread(()->{
+        new Thread(() -> {
             synchronized (lock) {
                 log.debug("t2启动");
                 if (c.size() != 5) {
@@ -43,12 +43,9 @@ public class Container3 {
                 }
                 log.debug("t2结束");
             }
-        }," t2").start();
+        }, " t2").start();
 
-
-
-
-        new Thread(()->{
+        new Thread(() -> {
             log.debug("t1启动");
             synchronized (lock) {
                 for (int i = 0; i < 10; i++) {
@@ -57,7 +54,6 @@ public class Container3 {
 
                     if (c.size() == 5) {
                         lock.notify();
-
                     }
 
                     try {
@@ -68,7 +64,5 @@ public class Container3 {
                 }
             }
         }, "t1").start();
-
     }
-
 }

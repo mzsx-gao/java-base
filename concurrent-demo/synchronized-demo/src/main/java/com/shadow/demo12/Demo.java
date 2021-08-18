@@ -15,15 +15,16 @@ public class Demo {
 
     AtomicInteger count = new AtomicInteger(0);
 
-
-    public void test(){
+    public void test() {
         for (int i = 0; i < 10000; i++) {
-            if(count.get() < 1000){
+            //这里count.get()和count.incrementAndGet()两个操作就不能保持原子性了
+            if (count.get() < 1000) {
                 //count++
                 count.incrementAndGet();
             }
         }
     }
+
     public static void main(String[] args) {
         Demo demo = new Demo();
 
@@ -33,9 +34,9 @@ public class Demo {
             threads.add(new Thread(demo::test, "thread-" + i));
         }
 
-        threads.forEach((o)->o.start());
+        threads.forEach((o) -> o.start());
 
-        threads.forEach((o)->{
+        threads.forEach((o) -> {
             try {
                 o.join();
             } catch (Exception e) {
@@ -43,7 +44,7 @@ public class Demo {
             }
         });
 
-        log.debug(demo.count+"");
+        log.debug(demo.count + "");
     }
 
 }

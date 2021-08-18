@@ -17,9 +17,9 @@ public class Demo {
 
     volatile int count = 0;
 
-    public void test(){
-        for (int i = 0; i < 10000; i++) {
-            count ++;
+    public void test() {
+        for (int i = 0; i < 1000; i++) {
+            count++;
         }
     }
 
@@ -35,10 +35,10 @@ public class Demo {
         }
 
         //遍历这个10个线程  依次启动
-        threads.forEach((o)->o.start());
+        threads.forEach((o) -> o.start());
 
         //等待10个线程执行完
-        threads.forEach((o)->{
+        threads.forEach((o) -> {
             try {
                 o.join();
             } catch (Exception e) {
@@ -46,7 +46,7 @@ public class Demo {
             }
         });
 
-        log.debug(demo.count+"");
+        log.debug(demo.count + "");
     }
 
 }
