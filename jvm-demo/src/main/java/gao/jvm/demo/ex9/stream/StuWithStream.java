@@ -13,23 +13,9 @@ public class StuWithStream {
     public static void main(String[] args) {
         List<Student> studentList = Datainit();
         groupBy(studentList);
-        // filter(studentList);
+        filter(studentList);
         total(studentList);
         MaxAndMin(studentList);
-
-    }
-
-    public static List<Student> Datainit() {
-        List<Student> students = Arrays.asList(
-            new Student("小明", 168, "男"),
-            new Student("大明", 182, "男"),
-            new Student("小白", 174, "男"),
-            new Student("小黑", 186, "男"),
-            new Student("小红", 156, "女"),
-            new Student("小黄", 158, "女"),
-            new Student("小青", 165, "女"),
-            new Student("小紫", 172, "女"));
-        return students;
     }
 
     //Stream实现分组
@@ -71,5 +57,18 @@ public class StuWithStream {
             .min()
             .getAsInt();
         System.out.println("min:" + minHeight);
+    }
+
+    public static List<Student> Datainit() {
+        List<Student> students = Arrays.asList(
+            new Student("小明", 168, "男"),
+            new Student("大明", 182, "男"),
+            new Student("小白", 174, "男"),
+            new Student("小黑", 186, "男"),
+            new Student("小红", 156, "女"),
+            new Student("小黄", 158, "女"),
+            new Student("小青", 165, "女"),
+            new Student("小紫", 172, "女"));
+        return students;
     }
 }

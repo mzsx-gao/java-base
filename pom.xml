@@ -28,6 +28,7 @@
         <module>network/netty-adv</module>
         <module>jvm-demo</module>
         <module>concurrent-demo/synchronized-demo</module>
+        <module>other/other-demo</module>
     </modules>
 
     <dependencies>

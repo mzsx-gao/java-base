@@ -9,6 +9,6 @@ public class StaticResolution {
 
     public static void main(String[] args) {
         StaticResolution.Hello();
-//            StaticResolution staticResolution = new StaticResolution();
+        StaticResolution staticResolution = new StaticResolution();
     }
 }

@@ -29,10 +29,10 @@ public class StaticDispatch {
     public static void main(String[] args) {
         StaticDispatch sr = new StaticDispatch();
 
-//        Human man = new Man();
-//        Human woman = new Woman();
-//        sr.sayHello(man);
-//        sr.sayHello(woman);
+        Human man = new Man();
+        Human woman = new Woman();
+        sr.sayHello(man);
+        sr.sayHello(woman);
 
         //实际类型变化
         Human human = new Man();

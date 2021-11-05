@@ -1,7 +1,6 @@
 package gao.jvm.demo.ex7.init;
 
 /**
- * @author 【享学课堂】 King老师
  * 父类
  */
 public class SuperClazz {
