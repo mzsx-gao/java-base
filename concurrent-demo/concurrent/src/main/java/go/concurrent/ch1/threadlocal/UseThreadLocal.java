@@ -5,8 +5,7 @@ package go.concurrent.ch1.threadlocal;
  */
 public class UseThreadLocal {
 	
-	private static ThreadLocal<Integer> intLocal
-            = new ThreadLocal<Integer>(){
+	private static ThreadLocal<Integer> intLocal = new ThreadLocal<Integer>(){
         @Override
         protected Integer initialValue() {
             return 1;

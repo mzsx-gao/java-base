@@ -9,7 +9,6 @@ public class VolatileCase {
     private volatile static boolean ready;
     private static int number;
 
-    //
     private static class PrintThread extends Thread{
         @Override
         public void run() {

@@ -33,7 +33,7 @@ public class ThreadLocalOOM {
                     oom.localVariable.set(new LocalVariable());
                     //new LocalVariable();
                     System.out.println("use local varaible");
-                    //oom.localVariable.remove();
+//                    oom.localVariable.remove();
                 }
             });
 

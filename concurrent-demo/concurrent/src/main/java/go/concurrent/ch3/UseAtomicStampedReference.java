@@ -3,7 +3,7 @@ package go.concurrent.ch3;
 import java.util.concurrent.atomic.AtomicStampedReference;
 
 /**
- *类说明：演示带版本戳的原子操作类
+ * 类说明：演示带版本戳的原子操作类
  */
 public class UseAtomicStampedReference {
     static AtomicStampedReference<String> asr
