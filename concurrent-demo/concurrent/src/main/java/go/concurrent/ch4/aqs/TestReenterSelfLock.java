@@ -5,7 +5,7 @@ import go.concurrent.tools.SleepTools;
 import java.util.concurrent.locks.Lock;
 
 /**
- *类说明：
+ * 类说明：改造独占锁为可重入
  */
 public class TestReenterSelfLock {
 

@@ -1,7 +1,7 @@
 package go.concurrent.ch4.templatepattern;
 
 /**
- * 类说明：
+ * 类说明：慕斯蛋糕
  */
 public class MouseCake extends AbstractCake {
 

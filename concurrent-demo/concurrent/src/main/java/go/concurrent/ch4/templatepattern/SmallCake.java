@@ -9,10 +9,12 @@ public class SmallCake extends AbstractCake {
     public void setFlag(boolean shouldApply){
         flag = shouldApply;
     }
+
     @Override
     protected boolean shouldApply() {
         return this.flag;
     }
+
     @Override
     protected void shape() {
         System.out.println("小蛋糕造型");

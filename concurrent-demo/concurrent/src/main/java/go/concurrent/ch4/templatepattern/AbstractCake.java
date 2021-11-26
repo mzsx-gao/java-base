@@ -9,13 +9,6 @@ public abstract class AbstractCake {
     protected abstract void brake();
 
     /*模板方法*/
-//    public final void run(){
-//        this.shape();
-//        this.apply();
-//        this.brake();
-//    }
-
-    /*模板方法*/
     public final void run(){
         this.shape();
         if(this.shouldApply()){
