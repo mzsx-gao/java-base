@@ -4,21 +4,21 @@ import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- *类说明：
+ * CompletionService使用示例
  */
 public class CompletionCase {
     private final int POOL_SIZE = Runtime.getRuntime().availableProcessors();
-    private final int TOTAL_TASK = Runtime.getRuntime().availableProcessors()*10;
+    private final int TOTAL_TASK = Runtime.getRuntime().availableProcessors() * 10;
 
     // 方法一，自己写集合来实现获取线程池中任务的返回结果
     public void testByQueue() throws Exception {
-    	long start = System.currentTimeMillis();
-    	AtomicInteger count = new AtomicInteger(0);
+
+        long start = System.currentTimeMillis();
+        AtomicInteger count = new AtomicInteger(0);
         // 创建线程池
         ExecutorService pool = Executors.newFixedThreadPool(POOL_SIZE);
         //队列,拿任务的执行结果
-        BlockingQueue<Future<Integer>> queue = 
-        		new LinkedBlockingQueue<>();
+        BlockingQueue<Future<Integer>> queue = new LinkedBlockingQueue<>();
 
         // 向里面扔任务
         for (int i = 0; i < TOTAL_TASK; i++) {
@@ -28,25 +28,24 @@ public class CompletionCase {
 
         // 检查线程池任务执行结果
         for (int i = 0; i < TOTAL_TASK; i++) {
-        	int sleptTime = queue.take().get();
-        	//System.out.println(" slept "+sleptTime+" ms ...");        	
-        	count.addAndGet(sleptTime);
+            int sleptTime = queue.take().get();
+            //System.out.println(" slept "+sleptTime+" ms ...");
+            count.addAndGet(sleptTime);
         }
 
         // 关闭线程池
         pool.shutdown();
-        System.out.println("-------------tasks sleep time "+count.get()
-        		+"ms,and spend time "
-        		+(System.currentTimeMillis()-start)+" ms");
+        System.out.println("-------------tasks sleep time " + count.get()
+            + "ms,and spend time " + (System.currentTimeMillis() - start) + " ms");
     }
 
-    public void testByCompletion() throws Exception{
+    public void testByCompletion() throws Exception {
+
         long start = System.currentTimeMillis();
         AtomicInteger count = new AtomicInteger(0);
         // 创建线程池
         ExecutorService pool = Executors.newFixedThreadPool(POOL_SIZE);
-        CompletionService<Integer> cSevice
-                = new ExecutorCompletionService<>(pool);
+        CompletionService<Integer> cSevice = new ExecutorCompletionService<>(pool);
 
         // 向里面扔任务
         for (int i = 0; i < TOTAL_TASK; i++) {
@@ -62,9 +61,8 @@ public class CompletionCase {
 
         // 关闭线程池
         pool.shutdown();
-        System.out.println("-------------tasks sleep time "+count.get()
-                +"ms,and spend time "
-                +(System.currentTimeMillis()-start)+" ms");
+        System.out.println("-------------tasks sleep time " + count.get()
+            + "ms,and spend time " + (System.currentTimeMillis() - start) + " ms");
 
     }
 

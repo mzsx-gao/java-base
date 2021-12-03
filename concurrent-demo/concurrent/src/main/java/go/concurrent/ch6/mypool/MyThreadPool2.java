@@ -4,7 +4,7 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
 /**
- *类说明：自定义线程池实现
+ * 类说明：自定义线程池实现
  */
 public class MyThreadPool2 {
 

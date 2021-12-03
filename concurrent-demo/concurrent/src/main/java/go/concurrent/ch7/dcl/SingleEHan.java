@@ -5,7 +5,9 @@ package go.concurrent.ch7.dcl;
  * 枚举
  */
 public class SingleEHan {
-    private SingleEHan(){}
+    private SingleEHan() {
+    }
+
     private static SingleEHan singleDcl = new SingleEHan();
 
 }

@@ -1,7 +1,7 @@
 package go.concurrent.ch7;
 
 /**
- *类说明：演示普通账户的死锁和解决
+ * 演示普通账户的死锁和解决
  */
 public class NormalDeadLock {
     private static Object valueFirst = new Object();//第一个锁

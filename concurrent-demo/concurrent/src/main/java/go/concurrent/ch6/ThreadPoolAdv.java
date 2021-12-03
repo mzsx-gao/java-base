@@ -7,7 +7,7 @@ import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- *类说明：自定义线程池中线程的创建方式，把线程设置为守护线程
+ * 自定义线程池中线程的创建方式，把线程设置为守护线程
  */
 public class ThreadPoolAdv {
     static class Worker implements Runnable
