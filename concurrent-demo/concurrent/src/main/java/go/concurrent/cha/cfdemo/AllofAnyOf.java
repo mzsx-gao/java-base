@@ -39,12 +39,12 @@ public class AllofAnyOf {
             System.out.println("future3完成");
             return "123abc";
         });
-        CompletableFuture.allOf(future1,future2,future3).thenRun(()->{
-            System.out.println("All done!");
-        });
+//        CompletableFuture.allOf(future1, future2, future3).thenRun(() -> {
+//            System.out.println("All done!");
+//        });
 
-//        CompletableFuture<Object> f = CompletableFuture.anyOf(future1,future2,future3);
-//        System.out.println(f.get());
+        CompletableFuture<Object> f = CompletableFuture.anyOf(future1,future2,future3);
+        System.out.println(f.get());
 
         SleepTools.second(5);
     }

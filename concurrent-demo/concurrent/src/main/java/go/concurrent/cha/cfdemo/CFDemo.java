@@ -12,10 +12,12 @@ public class CFDemo {
 
     static class GetResult extends Thread {
         CompletableFuture<Integer> f;
+
         GetResult(String threadName, CompletableFuture<Integer> f) {
             super(threadName);
             this.f = f;
         }
+
         @Override
         public void run() {
             try {
@@ -36,8 +38,8 @@ public class CFDemo {
         new GetResult("Client2", f).start();
         System.out.println("sleeping");
         SleepTools.second(2);
-        //f.complete(100);
-        f.completeExceptionally(new Exception());
+        f.complete(100);
+//        f.completeExceptionally(new Exception());
         System.in.read();
     }
 }
