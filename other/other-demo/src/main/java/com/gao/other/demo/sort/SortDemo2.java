@@ -2,16 +2,12 @@ package com.gao.other.demo.sort;
 
 /**
  * 名称: Demo
- * 描述: 排序算法
- * 八大排序算法：
- * 插入排序、希尔排序、归并排序
- * 选择排序、冒泡排序、快速排序
- * 堆排序、基数排序
+ * 描述: 排序算法2
  *
  * @author gaoshudian
  * @date 10/21/21 3:41 PM
  */
-public class SortDemo {
+public class SortDemo2 {
 
     /**
      * 直接插入排序，通过交换进行插入排序，借鉴冒泡排序
