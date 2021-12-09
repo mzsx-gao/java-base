@@ -12,5 +12,12 @@
 
     <artifactId>other-demo</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+        </dependency>
+    </dependencies>
 
 </project>

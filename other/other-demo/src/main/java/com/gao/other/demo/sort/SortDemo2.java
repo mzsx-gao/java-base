@@ -1,119 +1,131 @@
 package com.gao.other.demo.sort;
 
+import org.junit.Test;
+
+import java.util.Arrays;
+
 /**
- * 名称: Demo
- * 描述: 排序算法2
+ * 描述: 排序算法
+ * O(1)>O(logn)>O(n)>O(nlogn)>O(n^2)
+ * 八大排序算法：
+ * 插入排序、希尔排序、归并排序
+ * 选择排序、冒泡排序、快速排序
+ * 堆排序、基数排序
  *
  * @author gaoshudian
- * @date 10/21/21 3:41 PM
+ * @date 12/09/21 3:41 PM
  */
 public class SortDemo2 {
 
     /**
-     * 直接插入排序，通过交换进行插入排序，借鉴冒泡排序
-     * 时间复杂度:平均:O(n^2),最好:O(n^2),最差(n^2)
+     * 插入排序
+     * 时间复杂度:O(n^2),最好:O(n),最差(n^2)
      */
-    public static void sort(int[] a) {
-        for (int i = 0; i < a.length - 1; i++) {
-            for (int j = i + 1; j > 0; j--) {
-                if (a[j] < a[j - 1]) {
-                    int temp = a[j];
-                    a[j] = a[j - 1];
-                    a[j - 1] = temp;
+    @Test
+    public void insertSort() {
+        int a[] = {9, 8, 7, 0, 1, 3, 2};
+        //这里面会有几层循环 2
+        //时间复杂度：n^2
+        for (int i = 1; i < a.length; i++) {//为什么i要从1开始？ 第一个不用排序，我们就把数组从i分开，0~I的认为已经排好序
+            int data = a[i];
+            int j = i - 1;
+            for (; j >= 0; j--) {//从尾到头 1+2+3+4+5+...+n=>
+                if (a[j] > data) {
+                    a[j + 1] = a[j];        // 数据往后移动
+                } else {    //因为前面已经是排好序的 那么找到一个比他小的就不用找了，因为前面的肯定更小
+                    break; //O(1)		如果这个break执行的越多 那么我是不是效率就越高?
                 }
             }
-        }
-    }
+            a[j + 1] = data;
 
 
-    /**
-     * 简单选择排序
-     * 时间复杂度:平均:O(n²),最好:O(n²),最差(n²)
-     */
-    public static void sort2(int[] a) {
-        for (int i = 0; i < a.length; i++) {
-            int min = i;
-            //选出之后待排序中值最小的位置
-            for (int j = i + 1; j < a.length; j++) {
-                if (a[j] < a[min]) {
-                    min = j;
-                }
+            System.out.print("第" + i + "次的排序结果为：");
+            for (int k = 0; k < a.length; k++) {
+                System.out.print(a[k] + " ");
             }
-            //最小值不等于当前值时进行交换
-            if (min != i) {
-                int temp = a[i];
-                a[i] = a[min];
-                a[min] = temp;
-            }
+            System.out.println();
         }
     }
 
     /**
-     * 冒泡排序
-     * 时间复杂度: 平均:O(n²),最好:O(n),最差(n²)
+     * 希尔排序
+     * 基本思想:将待排序数组按照步长gap进行分组，然后将每组的元素利用直接插入排序的方法进行排序；
+     * 每次再将gap折半减小，循环上述操作；当gap=1时，利用直接插入，完成排序
+     * 时间复杂度:O(nlogn),最好:O(nlogn),最差(nlogn)
      */
-    public static void sort3(int[] a) {
-        //外层循环控制比较的次数
-        for (int i = 0; i < a.length - 1; i++) {
-            //内层循环控制到达位置
-            for (int j = 0; j < a.length - i - 1; j++) {
-                //前面的元素比后面大就交换
-                if (a[j] > a[j + 1]) {
-                    int temp = a[j];
-                    a[j] = a[j + 1];
-                    a[j + 1] = temp;
+    @Test
+    public void sort() {
+        int a[] = {9, 8, 7, 0, 1, 3, 2};
+        int length = a.length;
+        int h = 1;
+        while (h < length / 3) h = 3 * h + 1;
+        for (; h >= 1; h /= 3) {
+            for (int i = 0; i < a.length - h; i += h) {
+                for (int j = i + h; j > 0; j -= h) {
+                    if (a[j] < a[j - h]) {
+                        int temp = a[j];
+                        a[j] = a[j - h];
+                        a[j - h] = temp;
+                    }
                 }
             }
         }
-    }
 
+        for (int k = 0; k < a.length; k++) {
+            System.out.print(a[k] + " ");
+        }
+        System.out.println();
+    }
 
     /**
-     * 快速排序
-     * 时间复杂度: 平均:O(nlog₂n),最好:O(nlog₂n),最差O(n²)
-     *
-     * 伪代码描述：
-     *   i = L; j = R; 将基准数挖出形成第一个坑a[i]。
-     *   j--，由后向前找比它小的数，找到后挖出此数填前一个坑a[i]中。
-     *   i++，由前向后找比它大的数，找到后也挖出此数填到前一个坑a[j]中。
-     *   再重复执行2，3二步，直到i==j，将基准数填入a[i]中
+     * 归并排序
+     * 基本思想:
      */
-    public static void sort4(int[] a, int low, int high) {
-
-        //已经排完
-        if (low >= high) {
-            return;
-        }
-        int left = low;
-        int right = high;
-
-        //保存基准值
-        int pivot = a[left];
-        while (left < right) {
-            //从后向前找到比基准小的元素
-            while (left < right && a[right] >= pivot)
-                right--;
-            a[left] = a[right];
-            //从前往后找到比基准大的元素
-            while (left < right && a[left] <= pivot)
-                left++;
-            a[right] = a[left];
-        }
-        // 放置基准值，准备分治递归快排
-        a[left] = pivot;
-        sort4(a, low, left - 1);
-        sort4(a, left + 1, high);
+    @Test
+    public void test() {
+        int data[] = {9, 5, 6, 8, 0, 3, 7, 1};
+        megerSort(data, 0, data.length - 1);
+        System.out.println(Arrays.toString(data));
     }
 
-
-    public static void main(String[] args) {
-        int[] arr = {6, 3, 9, 4, 5, 7, 8};
-//        sort(arr);
-
-        System.out.println("快速排序");
-        sort4(arr,0,6);
-        for (int i = 0; i <= arr.length - 1; i++) {
-            System.out.println(arr[i]);
+    public void megerSort(int data[], int left, int right) { // 数组的两端
+        if (left < right) { // 相等了就表示只有一个数了 不用再拆了
+            int mid = (left + right) / 2;
+            megerSort(data, left, mid);
+            megerSort(data, mid + 1, right);
+            // 分完了 接下来就要进行合并，也就是我们递归里面归的过程
+            meger(data, left, mid, right);
         }
     }
+
+    public void meger(int data[], int left, int mid, int right) {
+        int temp[] = new int[data.length]; //借助一个临时数组用来保存合并的数据
+
+        int point1 = left;        //表示的是左边的第一个数的位置
+        int point2 = mid + 1;     //表示的是右边的第一个数的位置
+
+        int loc = left;           //表示的是我们当前已经到了哪个位置了
+        while (point1 <= mid && point2 <= right) {
+            if (data[point1] < data[point2]) {
+                temp[loc] = data[point1];
+                point1++;
+                loc++;
+            } else {
+                temp[loc] = data[point2];
+                point2++;
+                loc++;
+            }
+        }
+        //接下来要干嘛呢？合并排序完成了吗？
+        while (point1 <= mid) {
+            temp[loc++] = data[point1++];
+        }
+        while (point2 <= right) {
+            temp[loc++] = data[point2++];
+        }
+        for (int i = left; i <= right; i++) {
+            data[i] = temp[i];
+        }
+    }
+
 }
