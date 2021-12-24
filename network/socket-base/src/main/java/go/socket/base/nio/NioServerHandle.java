@@ -13,7 +13,7 @@ import java.util.Set;
 /**
  * 类说明：nio通信服务端处理器
  */
-public class NioServerHandle implements Runnable{
+public class NioServerHandle implements Runnable {
 
     private volatile boolean started;
     private ServerSocketChannel serverSocketChannel;
@@ -21,6 +21,7 @@ public class NioServerHandle implements Runnable{
 
     /**
      * 构造方法
+     *
      * @param port 指定要监听的端口号
      */
     public NioServerHandle(int port) {
@@ -34,10 +35,10 @@ public class NioServerHandle implements Runnable{
             /*绑定端口*/
             serverSocketChannel.socket().bind(new InetSocketAddress(port));
             /*注册事件，表示关心客户端连接*/
-            serverSocketChannel.register(selector,SelectionKey.OP_ACCEPT);
+            serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
 
             started = true;
-            System.out.println("服务器已启动，端口号："+port);
+            System.out.println("服务器已启动，端口号：" + port);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -45,14 +46,14 @@ public class NioServerHandle implements Runnable{
 
     @Override
     public void run() {
-        while(started){
+        while (started) {
             try {
                 /*获取当前有哪些事件*/
                 selector.select(1000);
                 /*获取事件的集合*/
                 Set<SelectionKey> selectionKeys = selector.selectedKeys();
                 Iterator<SelectionKey> iterator = selectionKeys.iterator();
-                while(iterator.hasNext()){
+                while (iterator.hasNext()) {
                     SelectionKey key = iterator.next();
                     /*我们必须首先将处理过的 SelectionKey 从选定的键集合中删除。如果我们没有删除处理过的键，
                     那么它仍然会在主集合中以一个激活的键出现，这会导致我们尝试再次处理它。*/
@@ -67,9 +68,9 @@ public class NioServerHandle implements Runnable{
 
     /*处理事件的发生*/
     private void handleInput(SelectionKey key) throws IOException {
-        if(key.isValid()){
+        if (key.isValid()) {
             /*处理新接入的客户端的请求*/
-            if(key.isAcceptable()){
+            if (key.isAcceptable()) {
                 /*获取关心当前事件的Channel*/
                 ServerSocketChannel ssc = (ServerSocketChannel) key.channel();
                 /*接受连接*/
@@ -77,35 +78,35 @@ public class NioServerHandle implements Runnable{
                 System.out.println("==========建立连接=========");
                 sc.configureBlocking(false);
                 /*关注读事件*/
-                sc.register(selector,SelectionKey.OP_READ);
+                sc.register(selector, SelectionKey.OP_READ);
             }
             /*处理对端的发送的数据*/
-            if(key.isReadable()){
+            if (key.isReadable()) {
                 SocketChannel sc = (SocketChannel) key.channel();
                 /*创建ByteBuffer，开辟一个缓冲区*/
                 ByteBuffer buffer = ByteBuffer.allocate(1024);
                 /*从通道里读取数据，然后写入buffer*/
                 int readBytes = sc.read(buffer);
-                if(readBytes>0){
+                if (readBytes > 0) {
                     /*将缓冲区当前的limit设置为position,position=0，用于后续对缓冲区的读取操作*/
                     buffer.flip();
                     /*根据缓冲区可读字节数创建字节数组*/
                     byte[] bytes = new byte[buffer.remaining()];
                     /*将缓冲区可读字节数组复制到新建的数组中*/
                     buffer.get(bytes);
-                    String message = new String(bytes,"UTF-8");
-                    System.out.println("服务器收到消息："+message);
+                    String message = new String(bytes, "UTF-8");
+                    System.out.println("服务器收到消息：" + message);
                     /*处理数据*/
                     String result = Const.response(message);
                     /*发送应答消息*/
-                    doWrite(sc,result);
+                    doWrite(sc, result);
 
-                }else if(readBytes<0){
+                } else if (readBytes < 0) {
                     /**
-                    * 取消特定的注册关系:
-                    * 取消的键不会立即从 selector 中移除,而是添加到 cancelledKeys 中,在下一次 select 操作时移除它.
-                    * 所以在调用某个 key 时,需要使用 isValid 进行 校验
-                    */
+                     * 取消特定的注册关系:
+                     * 取消的键不会立即从 selector 中移除,而是添加到 cancelledKeys 中,在下一次 select 操作时移除它.
+                     * 所以在调用某个 key 时,需要使用 isValid 进行 校验
+                     */
                     key.cancel();
                     /*关闭通道*/
                     sc.close();
@@ -115,7 +116,7 @@ public class NioServerHandle implements Runnable{
     }
 
     /*发送应答消息*/
-    private void doWrite(SocketChannel sc,String response) throws IOException {
+    private void doWrite(SocketChannel sc, String response) throws IOException {
         byte[] bytes = response.getBytes();
         ByteBuffer buffer = ByteBuffer.allocate(bytes.length);
         buffer.put(bytes);
@@ -124,7 +125,7 @@ public class NioServerHandle implements Runnable{
     }
 
 
-    public void stop(){
+    public void stop() {
         started = false;
     }
 

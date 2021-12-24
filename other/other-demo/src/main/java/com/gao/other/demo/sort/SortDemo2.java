@@ -1,5 +1,6 @@
 package com.gao.other.demo.sort;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -15,6 +16,7 @@ import java.util.Arrays;
  * @author gaoshudian
  * @date 12/09/21 3:41 PM
  */
+@Slf4j
 public class SortDemo2 {
 
     /**
@@ -54,7 +56,7 @@ public class SortDemo2 {
      * 时间复杂度:O(nlogn),最好:O(nlogn),最差(nlogn)
      */
     @Test
-    public void sort() {
+    public void hillSort() {
         int a[] = {9, 8, 7, 0, 1, 3, 2};
         int length = a.length;
         int h = 1;
@@ -79,7 +81,9 @@ public class SortDemo2 {
 
     /**
      * 归并排序
-     * 基本思想:
+     * 基本思想:归并排序算法是将两个（或两个以上）有序表合并成一个新的有序表，即把待排序序列分为若干个子序列，每个子序列是有序的，
+     * 然后再把有序子序列合并为整体有序序列
+     * 时间复杂度:nlogn
      */
     @Test
     public void test() {
@@ -94,11 +98,11 @@ public class SortDemo2 {
             megerSort(data, left, mid);
             megerSort(data, mid + 1, right);
             // 分完了 接下来就要进行合并，也就是我们递归里面归的过程
-            meger(data, left, mid, right);
+            merge(data, left, mid, right);
         }
     }
 
-    public void meger(int data[], int left, int mid, int right) {
+    public void merge(int data[], int left, int mid, int right) {
         int temp[] = new int[data.length]; //借助一个临时数组用来保存合并的数据
 
         int point1 = left;        //表示的是左边的第一个数的位置
@@ -127,5 +131,4 @@ public class SortDemo2 {
             data[i] = temp[i];
         }
     }
-
 }

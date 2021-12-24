@@ -3,43 +3,25 @@ package com.gao.other.demo.sort;
 import org.junit.Test;
 
 /**
- * 名称: Demo
  * 描述: 排序算法
- * O(1)>O(n)>O(logn)>O(nlogn)>O(n^2)
+ * O(1)>O(logn)>O(n)>O(nlogn)>O(n^2)
  * 八大排序算法：
  * 插入排序、希尔排序、归并排序
  * 选择排序、冒泡排序、快速排序
  * 堆排序、基数排序
  *
  * @author gaoshudian
- * @date 10/21/21 3:41 PM
+ * @date 12/09/21 3:41 PM
  */
 public class SortDemo {
-
-    /**
-     * 直接插入排序，通过交换进行插入排序，借鉴冒泡排序
-     * 时间复杂度:平均:O(n^2),最好:O(n^2),最差(n^2)
-     */
-    public static void insertSort(int[] a) {
-        for (int i = 0; i < a.length - 1; i++) {
-            for (int j = i + 1; j > 0; j--) {
-                if (a[j] < a[j - 1]) {
-                    int temp = a[j];
-                    a[j] = a[j - 1];
-                    a[j - 1] = temp;
-                }
-            }
-        }
-    }
-
-
-
 
     /**
      * 简单选择排序
      * 时间复杂度:平均:O(n²),最好:O(n²),最差(n²)
      */
-    public static void sort2(int[] a) {
+    @Test
+    public void sort1() {
+        int[] a = {6, 3, 9, 4, 5, 7, 8};
         for (int i = 0; i < a.length; i++) {
             int min = i;
             //选出之后待排序中值最小的位置
@@ -61,7 +43,9 @@ public class SortDemo {
      * 冒泡排序
      * 时间复杂度: 平均:O(n²),最好:O(n),最差(n²)
      */
-    public static void sort3(int[] a) {
+    public static void sort2() {
+
+        int[] a = {6, 3, 9, 4, 5, 7, 8};
         //外层循环控制比较的次数
         for (int i = 0; i < a.length - 1; i++) {
             //内层循环控制到达位置
@@ -76,18 +60,27 @@ public class SortDemo {
         }
     }
 
-
     /**
      * 快速排序
      * 时间复杂度: 平均:O(nlog₂n),最好:O(nlog₂n),最差O(n²)
-     * <p>
      * 伪代码描述：
      * i = L; j = R; 将基准数挖出形成第一个坑a[i]。
      * j--，由后向前找比它小的数，找到后挖出此数填前一个坑a[i]中。
      * i++，由前向后找比它大的数，找到后也挖出此数填到前一个坑a[j]中。
      * 再重复执行2，3二步，直到i==j，将基准数填入a[i]中
      */
-    public static void sort4(int[] a, int low, int high) {
+    @Test
+    public void sort3(String[] args) {
+        System.out.println("快速排序");
+        int[] arr = {6, 3, 9, 4, 5, 7, 8};
+        quickSort(arr, 0, 6);
+        for (int i = 0; i <= arr.length - 1; i++) {
+            System.out.println(arr[i]);
+        }
+    }
+
+
+    public static void quickSort(int[] a, int low, int high) {
 
         //已经排完
         if (low >= high) {
@@ -110,19 +103,8 @@ public class SortDemo {
         }
         // 放置基准值，准备分治递归快排
         a[left] = pivot;
-        sort4(a, low, left - 1);
-        sort4(a, left + 1, high);
+        quickSort(a, low, left - 1);
+        quickSort(a, left + 1, high);
     }
 
-
-    public static void main(String[] args) {
-        int[] arr = {6, 3, 9, 4, 5, 7, 8};
-//        sort(arr);
-
-        System.out.println("快速排序");
-        sort4(arr, 0, 6);
-        for (int i = 0; i <= arr.length - 1; i++) {
-            System.out.println(arr[i]);
-        }
-    }
 }

@@ -6,13 +6,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 /**
- *   名称: IpDemo.java
- *   描述: InetAddress类的使用
- *   类型: JAVA
- *   最近修改时间:2018/7/16 13:00
- *   @version [版本号, V1.0]
- *   @since 2018/7/16 13:00
- *   @author gaoshudian
+ * InetAddress类的使用
  */
 public class IpDemo {
 
