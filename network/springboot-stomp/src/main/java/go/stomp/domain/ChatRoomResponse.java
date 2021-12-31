@@ -4,6 +4,7 @@ package go.stomp.domain;
  * 类说明：聊天室的应答实体
  */
 public class ChatRoomResponse {
+
     private String name;
     private String chatValue;
 

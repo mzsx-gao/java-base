@@ -19,8 +19,7 @@ public class StompController {
 
     /*消息群发，接受发送至自massRequest的请求*/
     @MessageMapping("/massRequest")
-    //@SendTo可以实现处理业务后，向订阅了/mass/getResponse地址的客户端发送消息
-    @SendTo("/mass/getResponse")
+    @SendTo("/mass/getResponse") //@SendTo可以实现处理业务后，向订阅了/mass/getResponse地址的客户端发送消息
     public ChatRoomResponse mass(ChatRoomRequest chatRoomRequest){
         System.out.println("name = " + chatRoomRequest.getName());
         System.out.println("chatValue = " + chatRoomRequest.getChatValue());

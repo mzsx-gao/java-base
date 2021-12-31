@@ -51,8 +51,8 @@ public class ClientMsgPackEcho {
             ch.pipeline().addLast(new LineBasedFrameDecoder(1024));
 
             /*对我们要发送的数据做编码-序列化*/
-           ch.pipeline().addLast(new MsgPackEncode());
-           ch.pipeline().addLast(new MsgPackClientHandler(5));
+            ch.pipeline().addLast(new MsgPackEncode());
+            ch.pipeline().addLast(new MsgPackClientHandler(5));
         }
     }
 

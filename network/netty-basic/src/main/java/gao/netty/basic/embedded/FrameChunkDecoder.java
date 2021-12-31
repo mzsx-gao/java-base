@@ -7,11 +7,9 @@ import io.netty.handler.codec.TooLongFrameException;
 
 import java.util.List;
 
-/**
- *  FrameChunkDecoder
- */
 //扩展 ByteToMessageDecoder以将入站字节解码为消息
 public class FrameChunkDecoder extends ByteToMessageDecoder {
+
     private final int maxFrameSize;
 
     //指定将要产生的帧的最大允许大小

@@ -16,11 +16,9 @@ function connect(){
     var socket = new SockJS('/endpointMark'); //连接SockJS的endpoint名称为"endpointMark"
     stompClient = Stomp.over(socket);//使用STMOP子协议的WebSocket客户端
     stompClient.connect({},function(frame){//连接WebSocket服务端
-
         console.log('Connected:' + frame);
         //接收广播信息
         stompTopic();
-
     });
 }
 
@@ -32,6 +30,25 @@ function disconnect(){
     console.log("Disconnected");
 }
 
+//群发消息
+function sendMassMessage(){
+    var postValue={};
+    var chatValue=$("#sendChatValue");
+    var userName=$("#selectName").val();
+    postValue.name=userName;
+    postValue.chatValue=chatValue.val();
+    //postValue.userId="0";
+    if(userName==1||userName==null){
+        alert("请选择你是谁！");
+        return;
+    }
+    if(chatValue==""||userName==null){
+        alert("不能发送空消息！");
+        return;
+    }
+    stompClient.send("/massRequest",{},JSON.stringify(postValue));
+    chatValue.val("");
+}
 //一对多，发起订阅
 function stompTopic(){
     //通过stompClient.subscribe订阅目标(destination)发送的消息（广播接收信息）
@@ -57,26 +74,6 @@ function stompTopic(){
                 "</div>");
         }
     });
-}
-
-//群发消息
-function sendMassMessage(){
-    var postValue={};
-    var chatValue=$("#sendChatValue");
-    var userName=$("#selectName").val();
-    postValue.name=userName;
-    postValue.chatValue=chatValue.val();
-    //postValue.userId="0";
-    if(userName==1||userName==null){
-        alert("请选择你是谁！");
-        return;
-    }
-    if(chatValue==""||userName==null){
-        alert("不能发送空消息！");
-        return;
-    }
-    stompClient.send("/massRequest",{},JSON.stringify(postValue));
-    chatValue.val("");
 }
 
 //单独发消息
@@ -110,7 +107,6 @@ function sendAloneMessage(){
         "     </div>");
     chatValue.val("");
 }
-
 //一对一，发起订阅
 function stompQueue(){
 

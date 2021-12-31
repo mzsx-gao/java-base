@@ -13,8 +13,7 @@ import io.netty.handler.ssl.SslContext;
 /**
  * 类说明：增加handler
  */
-public class WebSocketServerInitializer
-        extends ChannelInitializer<SocketChannel> {
+public class WebSocketServerInitializer extends ChannelInitializer<SocketChannel> {
 
     /*websocket访问路径*/
     private static final String WEBSOCKET_PATH = "/websocket";

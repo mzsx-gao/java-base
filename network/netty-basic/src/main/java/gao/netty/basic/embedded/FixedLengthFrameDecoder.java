@@ -8,6 +8,7 @@ import java.util.List;
 
 //扩展 ByteToMessageDecoder 以处理入站字节，并将它们解码为消息
 public class FixedLengthFrameDecoder extends ByteToMessageDecoder {
+
     private final int frameLength;
 
     //指定要生成的帧的长度

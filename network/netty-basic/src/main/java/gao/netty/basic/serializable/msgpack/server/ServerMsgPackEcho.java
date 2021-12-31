@@ -48,12 +48,12 @@ public class ServerMsgPackEcho {
         @Override
         protected void initChannel(Channel ch) throws Exception {
             /**
-             * maxFrameLength：表示的是包的最大长度，
-             * lengthFieldOffset：指的是长度域的偏移量，表示跳过指定个数字节之后的才是长度域；
-             * lengthFieldLength：记录该帧数据长度的字段，也就是长度域本身的长度；
-             * lengthAdjustment：长度的一个修正值，可正可负，Netty 在读取到数据包的长度值 N 后， 认为接下来的 N 个字节都是需要读取的，
-             *                  但是根据实际情况，有可能需要增加 N 的值，也有可能需要减少 N 的值，具体增加多少，减少多少，写在这个参数里
-             * initialBytesToStrip：从数据帧中跳过的字节数，表示得到一个完整的数据包之后，扔掉这个数据包中多少字节数，才是后续业务实际需要的业务数据
+             * maxFrameLength：      表示的是包的最大长度，
+             * lengthFieldOffset：   指的是长度域的偏移量，表示跳过指定个数字节之后的才是长度域；
+             * lengthFieldLength：   记录该帧数据长度的字段，也就是长度域本身的长度；
+             * lengthAdjustment：    长度的一个修正值，可正可负，Netty 在读取到数据包的长度值 N 后， 认为接下来的 N 个字节都是需要读取的，
+             *                       但是根据实际情况，有可能需要增加 N 的值，也有可能需要减少 N 的值，具体增加多少，减少多少，写在这个参数里
+             * initialBytesToStrip:  从数据帧中跳过的字节数，表示得到一个完整的数据包之后，扔掉这个数据包中多少字节数，才是后续业务实际需要的业务数据
              */
             ch.pipeline().addLast(new LengthFieldBasedFrameDecoder(65535, 0, 2, 0, 2));
             ch.pipeline().addLast(new MsgPackDecoder());

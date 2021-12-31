@@ -16,7 +16,7 @@
         <module>network/socket-base</module>
         <module>other/dtd-schema-xml</module>
         <module>other/dbpools</module>
-        <module>annotationprocessor/annotation-processor</module>
+        <!--<module>annotationprocessor/annotation-processor</module>-->
         <module>annotationprocessor/annotation-processor-test</module>
         <module>other/commons-digester</module>
         <module>other/log-demo</module>
@@ -50,7 +50,9 @@
         <pluginManagement>
             <plugins>
                 <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.5.1</version>
                     <configuration>
                         <source>1.8</source>
                         <target>1.8</target>

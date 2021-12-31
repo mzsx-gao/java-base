@@ -17,24 +17,19 @@ import io.netty.util.concurrent.ImmediateEventExecutor;
  */
 public final class WebSocketServer {
 
-    /*创建 DefaultChannelGroup，用来保存所
-    有已经连接的 WebSocket Channel，群发和一对一功能可以用上*/
-    private final static ChannelGroup channelGroup =
-            new DefaultChannelGroup(ImmediateEventExecutor.INSTANCE);
+    /*创建 DefaultChannelGroup，用来保存所有已经连接的 WebSocket Channel，群发和一对一功能可以用上*/
+    private final static ChannelGroup channelGroup = new DefaultChannelGroup(ImmediateEventExecutor.INSTANCE);
 
     static final boolean SSL = false;//是否启用ssl
     /*通过ssl访问端口为8443，否则为8080*/
-    static final int PORT
-            = Integer.parseInt(
-                    System.getProperty("port", SSL? "8443" : "8080"));
+    static final int PORT = Integer.parseInt(System.getProperty("port", SSL ? "8443" : "8080"));
 
     public static void main(String[] args) throws Exception {
         /*SSL配置*/
         final SslContext sslCtx;
         if (SSL) {
             SelfSignedCertificate ssc = new SelfSignedCertificate();
-            sslCtx = SslContextBuilder.forServer(ssc.certificate(),
-                    ssc.privateKey()).build();
+            sslCtx = SslContextBuilder.forServer(ssc.certificate(), ssc.privateKey()).build();
         } else {
             sslCtx = null;
         }
@@ -44,14 +39,10 @@ public final class WebSocketServer {
         try {
             ServerBootstrap b = new ServerBootstrap();
             b.group(bossGroup, workerGroup)
-             .channel(NioServerSocketChannel.class)
-             .childHandler(new WebSocketServerInitializer(sslCtx,channelGroup));
-
+                .channel(NioServerSocketChannel.class)
+                .childHandler(new WebSocketServerInitializer(sslCtx, channelGroup));
             Channel ch = b.bind(PORT).sync().channel();
-
-            System.out.println("打开浏览器访问： " +
-                    (SSL? "https" : "http") + "://127.0.0.1:" + PORT + '/');
-
+            System.out.println("打开浏览器访问： " + (SSL ? "https" : "http") + "://127.0.0.1:" + PORT + '/');
             ch.closeFuture().sync();
         } finally {
             bossGroup.shutdownGracefully();
