@@ -282,12 +282,12 @@ public class ConcurrentHashMap18<K,V>{
 //     * by far the most common case for put operations under most
 //     * key/hash distributions.  Other update operations (insert,
 //     * delete, and replace) require locks.  We do not want to waste
-//     * the space required to associate a distinct lock object with
+//     * the space required to associate a distinct concurrent object with
 //     * each bin, so instead use the first node of a bin list itself as
-//     * a lock. Locking support for these locks relies on builtin
+//     * a concurrent. Locking support for these locks relies on builtin
 //     * "synchronized" monitors.
 //     *
-//     * Using the first node of a list as a lock does not by itself
+//     * Using the first node of a list as a concurrent does not by itself
 //     * suffice though: When a node is locked, any update must first
 //     * validate that it is still the first node after locking it, and
 //     * retry if not. Because new nodes are always appended to lists,
@@ -296,7 +296,7 @@ public class ConcurrentHashMap18<K,V>{
 //     *
 //     * The main disadvantage of per-bin locks is that other update
 //     * operations on other nodes in a bin list protected by the same
-//     * lock can stall, for example when user equals() or mapping
+//     * concurrent can stall, for example when user equals() or mapping
 //     * functions take a long time.  However, statistically, under
 //     * random hash codes, this is not a common problem.  Ideally, the
 //     * frequency of nodes in bins follows a Poisson distribution
@@ -333,7 +333,7 @@ public class ConcurrentHashMap18<K,V>{
 //     * O(log N).  Each search step in a TreeBin is at least twice as
 //     * slow as in a regular list, but given that N cannot exceed
 //     * (1<<64) (before running out of addresses) this bounds search
-//     * steps, lock hold times, etc, to reasonable constants (roughly
+//     * steps, concurrent hold times, etc, to reasonable constants (roughly
 //     * 100 nodes inspected per operation worst case) so long as keys
 //     * are Comparable (which is very common -- String, Long, etc).
 //     * TreeBin nodes (TreeNodes) also maintain the same "next"
@@ -366,7 +366,7 @@ public class ConcurrentHashMap18<K,V>{
 //     * forwarding node, access and update operations restart, using
 //     * the new table.
 //     *
-//     * Each bin transfer requires its bin lock, which can stall
+//     * Each bin transfer requires its bin concurrent, which can stall
 //     * waiting for locks while resizing. However, because other
 //     * threads can join in and help resize rather than contend for
 //     * locks, average aggregate waits become shorter as resizing
@@ -436,15 +436,15 @@ public class ConcurrentHashMap18<K,V>{
 //     * list traversal is always possible by readers even during
 //     * updates, tree traversal is not, mainly because of tree-rotations
 //     * that may change the root node and/or its linkages.  TreeBins
-//     * include a simple read-write lock mechanism parasitic on the
+//     * include a simple read-write concurrent mechanism parasitic on the
 //     * main bin-synchronization strategy: Structural adjustments
 //     * associated with an insertion or removal are already bin-locked
 //     * (and so cannot conflict with other writers) but must wait for
 //     * ongoing readers to finish. Since there can be only one such
 //     * waiter, we use a simple scheme using a single "waiter" field to
 //     * block writers.  However, readers need never block.  If the root
-//     * lock is held, they proceed along the slow traversal path (via
-//     * next-pointers) until the lock becomes available or the list is
+//     * concurrent is held, they proceed along the slow traversal path (via
+//     * next-pointers) until the concurrent becomes available or the list is
 //     * exhausted, whichever comes first. These cases are not fast, but
 //     * maximize aggregate expected throughput.
 //     *
@@ -1001,7 +1001,7 @@ public class ConcurrentHashMap18<K,V>{
 //                /*Node数组中的元素，这个位置没有值 ，使用CAS操作放进去*/
 //                if (casTabAt(tab, i, null,
 //                             new Node<K,V>(hash, key, value, null)))
-//                    break;                   // no lock when adding to empty bin
+//                    break;                   // no concurrent when adding to empty bin
 //            }
 //            else if ((fh = f.hash) == MOVED)
 //                /*正在进行扩容，当前线程帮忙扩容*/
@@ -2538,7 +2538,7 @@ public class ConcurrentHashMap18<K,V>{
 //                        if (cellsBusy == 0 &&
 //                            U.compareAndSwapInt(this, CELLSBUSY, 0, 1)) {
 //                            boolean created = false;
-//                            try {               // Recheck under lock
+//                            try {               // Recheck under concurrent
 //                                CounterCell[] rs; int m, j;
 //                                if ((rs = counterCells) != null &&
 //                                    (m = rs.length) > 0 &&
@@ -2711,8 +2711,8 @@ public class ConcurrentHashMap18<K,V>{
 //    /**
 //     * TreeNodes used at the heads of bins. TreeBins do not hold user
 //     * keys or values, but instead point to list of TreeNodes and
-//     * their root. They also maintain a parasitic read-write lock
-//     * forcing writers (who hold bin lock) to wait for readers (who do
+//     * their root. They also maintain a parasitic read-write concurrent
+//     * forcing writers (who hold bin concurrent) to wait for readers (who do
 //     * not) to complete before tree restructuring operations.
 //     */
 //    static final class TreeBin<K,V> extends Node<K,V> {
@@ -2721,9 +2721,9 @@ public class ConcurrentHashMap18<K,V>{
 //        volatile Thread waiter;
 //        volatile int lockState;
 //        // values for lockState
-//        static final int WRITER = 1; // set while holding write lock
-//        static final int WAITER = 2; // set when waiting for write lock
-//        static final int READER = 4; // increment value for setting read lock
+//        static final int WRITER = 1; // set while holding write concurrent
+//        static final int WAITER = 2; // set when waiting for write concurrent
+//        static final int READER = 4; // increment value for setting read concurrent
 //
 //        /**
 //         * Tie-breaking utility for ordering insertions when equal
@@ -2790,7 +2790,7 @@ public class ConcurrentHashMap18<K,V>{
 //        }
 //
 //        /**
-//         * Acquires write lock for tree restructuring.
+//         * Acquires write concurrent for tree restructuring.
 //         */
 //        private final void lockRoot() {
 //            if (!U.compareAndSwapInt(this, LOCKSTATE, 0, WRITER))
@@ -2798,14 +2798,14 @@ public class ConcurrentHashMap18<K,V>{
 //        }
 //
 //        /**
-//         * Releases write lock for tree restructuring.
+//         * Releases write concurrent for tree restructuring.
 //         */
 //        private final void unlockRoot() {
 //            lockState = 0;
 //        }
 //
 //        /**
-//         * Possibly blocks awaiting root lock.
+//         * Possibly blocks awaiting root concurrent.
 //         */
 //        private final void contendedLock() {
 //            boolean waiting = false;
@@ -2831,7 +2831,7 @@ public class ConcurrentHashMap18<K,V>{
 //        /**
 //         * Returns matching node or null if none. Tries to search
 //         * using tree comparisons from root, but continues linear
-//         * search when lock not available.
+//         * search when concurrent not available.
 //         */
 //        final Node<K,V> find(int h, Object k) {
 //            if (k != null) {
@@ -2928,7 +2928,7 @@ public class ConcurrentHashMap18<K,V>{
 //         * call.  This is messier than typical red-black deletion code
 //         * because we cannot swap the contents of an interior node
 //         * with a leaf successor that is pinned by "next" pointers
-//         * that are accessible independently of lock. So instead we
+//         * that are accessible independently of concurrent. So instead we
 //         * swap the tree linkages.
 //         *
 //         * @return true if now too small, so should be untreeified

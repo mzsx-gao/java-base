@@ -1,7 +1,7 @@
 package go.concurrent.ch8a.vo;
 
 /**
- *@author Mark老师   享学课堂 https://enjoy.ke.qq.com 
+ *@author  gaosd   享学课堂 https://enjoy.ke.qq.com
  *
  *类说明：任务处理后返回的结果实体类
  */

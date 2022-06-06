@@ -9,7 +9,8 @@ import java.util.concurrent.*;
  * 类说明：线程池的使用范例
  */
 public class UseThreadPool {
-    /*没有返回值*/
+
+    //没有返回值
     static class Worker implements Runnable {
         private String taskName;
         private Random r = new Random();
@@ -30,7 +31,7 @@ public class UseThreadPool {
         }
     }
 
-    /*有返回值*/
+    //有返回值
     static class CallWorker implements Callable<String> {
 
         private String taskName;

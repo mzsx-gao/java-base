@@ -4,9 +4,6 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-/**
- * 类说明：
- */
 public class ExpressCond {
 
     public final static String CITY = "ShangHai";

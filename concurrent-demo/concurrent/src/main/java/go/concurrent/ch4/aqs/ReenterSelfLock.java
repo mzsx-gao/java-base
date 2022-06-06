@@ -55,9 +55,9 @@ public class ReenterSelfLock implements Lock {
     private final Sync sync = new Sync();
 
     public void lock() {
-        System.out.println(Thread.currentThread().getName() + " ready get lock");
+        System.out.println(Thread.currentThread().getName() + " ready get concurrent");
         sync.acquire(1);
-        System.out.println(Thread.currentThread().getName() + " already got lock");
+        System.out.println(Thread.currentThread().getName() + " already got concurrent");
     }
 
     public boolean tryLock() {
@@ -65,9 +65,9 @@ public class ReenterSelfLock implements Lock {
     }
 
     public void unlock() {
-        System.out.println(Thread.currentThread().getName() + " ready release lock");
+        System.out.println(Thread.currentThread().getName() + " ready release concurrent");
         sync.release(1);
-        System.out.println(Thread.currentThread().getName() + " already released lock");
+        System.out.println(Thread.currentThread().getName() + " already released concurrent");
     }
 
     public Condition newCondition() {

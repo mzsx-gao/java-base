@@ -8,7 +8,7 @@ import java.util.concurrent.locks.ReentrantLock;
  jdk1.5以后将同步和锁封装成了对象。 并将操作锁的隐式方式定义到了该对象中，将隐式动作变成了显示动作。
  Lock接口： 出现替代了同步代码块或者同步函数。将同步的隐式锁操作变成现实锁操作。同时更为灵活。可以一个锁上加上多组监视器。
 
- lock():获取锁。
+ concurrent():获取锁。
  unlock():释放锁，通常需要定义finally代码块中。
  Condition接口：出现替代了Object中的wait notify notifyAll方法。
 

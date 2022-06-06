@@ -21,6 +21,7 @@
         <module>other/commons-digester</module>
         <module>other/log-demo</module>
         <module>concurrent-demo/concurrent</module>
+        <module>concurrent-demo/my-demo</module>
         <module>network/netty-http</module>
         <module>network/springboot-stomp</module>
         <module>network/springboot-websocket</module>
@@ -29,6 +30,7 @@
         <module>jvm-demo</module>
         <module>concurrent-demo/synchronized-demo</module>
         <module>other/other-demo</module>
+        <module>algorithm</module>
     </modules>
 
     <dependencies>
@@ -42,6 +44,12 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.16.10</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
         </dependency>
     </dependencies>
 

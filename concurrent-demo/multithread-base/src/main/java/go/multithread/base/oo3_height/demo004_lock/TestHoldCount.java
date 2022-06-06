@@ -3,7 +3,7 @@ package go.multithread.base.oo3_height.demo004_lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * lock.getHoldCount()方法：只能在当前调用线程内部使用，不能再其他线程中使用
+ * concurrent.getHoldCount()方法：只能在当前调用线程内部使用，不能再其他线程中使用
  * 那么我可以在m1方法里去调用m2方法，同时m1方法和m2方法都持有lock锁定即可 测试结果holdCount数递增
  *
  */

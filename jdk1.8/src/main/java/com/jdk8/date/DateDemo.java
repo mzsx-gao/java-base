@@ -130,12 +130,15 @@ public class DateDemo {
 
     public static void main(String[] args) {
 
-        LocalDate crischristmas = LocalDate.of(2019,8,2);
-        LocalDate crischristmas2 = LocalDate.of(2019,12,7);
+        LocalDate crischristmas = LocalDate.of(2019,7,31);
+        LocalDate crischristmas2 = LocalDate.of(2019,8,3);
+        System.out.println(crischristmas.plusDays(3).equals(crischristmas2));
         System.out.println("总共差"+ChronoUnit.DAYS.between(crischristmas,crischristmas2)+"天");
 
         //获取下个自然月，格式yyyyMM
         System.out.println(crischristmas.plusMonths(1).format(DateTimeFormatter.ofPattern("yyyyMM")));
+
+
 
     }
 

@@ -7,13 +7,13 @@ package go.multithread.base.oo2_middle.demo002;
  */
 public class ChangeLock {
 
-	private String lock = "lock";
+	private String lock = "concurrent";
 	
 	private void method(){
 		synchronized (lock) {
 			try {
 				System.out.println("当前线程 : "  + Thread.currentThread().getName() + "开始");
-				lock = "change lock";
+				lock = "change concurrent";
 				Thread.sleep(2000);
 				System.out.println("当前线程 : "  + Thread.currentThread().getName() + "结束");
 			} catch (InterruptedException e) {

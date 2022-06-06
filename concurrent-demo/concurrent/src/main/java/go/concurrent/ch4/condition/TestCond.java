@@ -1,11 +1,11 @@
 package go.concurrent.ch4.condition;
 
 /**
- * 类说明：测试Lock和Condition实现等待通知
+ * 测试Lock和Condition实现等待通知
  */
 public class TestCond {
 
-//    private static ExpressCond express = new ExpressCond(0, ExpressCond.CITY);
+    //    private static ExpressCond express = new ExpressCond(0, ExpressCond.CITY);
     private static ExpressCondOneLock express = new ExpressCondOneLock(0, ExpressCond.CITY);
 
     // 检查里程数变化的线程,不满足条件，线程一直等待

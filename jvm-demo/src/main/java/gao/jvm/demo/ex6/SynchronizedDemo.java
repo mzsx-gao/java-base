@@ -15,7 +15,7 @@ public class SynchronizedDemo {
 
     void doLock(){
         synchronized (lock){
-            System.out.println("lock");
+            System.out.println("concurrent");
         }
     }
 }

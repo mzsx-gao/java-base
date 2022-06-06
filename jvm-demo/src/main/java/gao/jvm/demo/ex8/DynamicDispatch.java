@@ -1,7 +1,6 @@
 package gao.jvm.demo.ex8;
 
 /**
- * @author King老师
  * 动态分派（多态）
  */
 public class DynamicDispatch {

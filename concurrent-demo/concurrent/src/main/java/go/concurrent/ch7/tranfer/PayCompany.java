@@ -5,7 +5,7 @@ import go.concurrent.ch7.tranfer.service.ITransfer;
 import go.concurrent.ch7.tranfer.service.SafeOperateToo;
 
 /**
- *@author Mark老师   享学课堂 https://enjoy.ke.qq.com 
+ *@author  gaosd   享学课堂 https://enjoy.ke.qq.com
  *
  *类说明：模拟支付公司转账的动作
  */

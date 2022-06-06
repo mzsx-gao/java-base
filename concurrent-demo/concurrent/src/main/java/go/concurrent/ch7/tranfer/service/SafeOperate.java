@@ -4,7 +4,7 @@ package go.concurrent.ch7.tranfer.service;
 import go.concurrent.ch7.tranfer.UserAccount;
 
 /**
- *@author Mark老师   享学课堂 https://enjoy.ke.qq.com 
+ *@author  gaosd   享学课堂 https://enjoy.ke.qq.com
  *
  *类说明：不会产生死锁的安全转账
  */

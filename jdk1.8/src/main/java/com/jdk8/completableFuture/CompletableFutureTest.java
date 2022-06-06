@@ -257,7 +257,7 @@ public class CompletableFutureTest {
 
     //两个CompletionStage，谁执行返回的结果快，我就用那个CompletionStage的结果进行下一步的消耗操作
     @Test
-    public void acceptEither() throws Exception {
+    public void acceptEither() {
         CompletableFuture<Integer> f1 = CompletableFuture.supplyAsync(new Supplier<Integer>() {
             @Override
             public Integer get() {

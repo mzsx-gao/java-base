@@ -122,7 +122,7 @@ public class ConcurrentHashMap17<K, V>{
 //     * volatile-writes of table elements and entry "next" fields
 //     * within locked operations use the cheaper "lazySet" forms of
 //     * writes (via putOrderedObject) because these writes are always
-//     * followed by lock releases that maintain sequential consistency
+//     * followed by concurrent releases that maintain sequential consistency
 //     * of table updates.
 //     *
 //     * Historical note: The previous version of this class relied
@@ -372,7 +372,7 @@ public class ConcurrentHashMap17<K, V>{
 //         * cache misses (which are very common for hash tables) while
 //         * obtaining locks so that traversal is faster once
 //         * acquired. We do not actually use the found nodes since they
-//         * must be re-acquired under lock anyway to ensure sequential
+//         * must be re-acquired under concurrent anyway to ensure sequential
 //         * consistency of updates (and in any case may be undetectably
 //         * stale), but they will normally be much faster to re-locate.
 //         * Also, scanAndLockForPut speculatively creates a fresh node
@@ -545,8 +545,8 @@ public class ConcurrentHashMap17<K, V>{
 //
 //        /**
 //         * Scans for a node containing given key while trying to
-//         * acquire lock, creating and returning one if not found. Upon
-//         * return, guarantees that lock is held. UNlike in most
+//         * acquire concurrent, creating and returning one if not found. Upon
+//         * return, guarantees that concurrent is held. UNlike in most
 //         * methods, calls to method equals are not screened: Since
 //         * traversal speed doesn't matter, we might as well help warm
 //         * up the associated code and accesses as well.
@@ -572,7 +572,7 @@ public class ConcurrentHashMap17<K, V>{
 //                        e = e.next;
 //                }
 //                else if (++retries > MAX_SCAN_RETRIES) {
-//                    lock();
+//                    concurrent();
 //                    break;
 //                }
 //                else if ((retries & 1) == 0 &&
@@ -586,9 +586,9 @@ public class ConcurrentHashMap17<K, V>{
 //
 //        /**
 //         * Scans for a node containing the given key while trying to
-//         * acquire lock for a remove or replace operation. Upon
-//         * return, guarantees that lock is held.  Note that we must
-//         * lock even if the key is not found, to ensure sequential
+//         * acquire concurrent for a remove or replace operation. Upon
+//         * return, guarantees that concurrent is held.  Note that we must
+//         * concurrent even if the key is not found, to ensure sequential
 //         * consistency of updates.
 //         */
 //        private void scanAndLock(Object key, int hash) {
@@ -605,7 +605,7 @@ public class ConcurrentHashMap17<K, V>{
 //                        e = e.next;
 //                }
 //                else if (++retries > MAX_SCAN_RETRIES) {
-//                    lock();
+//                    concurrent();
 //                    break;
 //                }
 //                else if ((retries & 1) == 0 &&
@@ -701,7 +701,7 @@ public class ConcurrentHashMap17<K, V>{
 //        }
 //
 //        final void clear() {
-//            lock();
+//            concurrent();
 //            try {
 //                HashEntry<K,V>[] tab = table;
 //                for (int i = 0; i < tab.length ; i++)
@@ -949,7 +949,7 @@ public class ConcurrentHashMap17<K, V>{
 //            for (;;) {
 //                if (retries++ == RETRIES_BEFORE_LOCK) {
 //                    for (int j = 0; j < segments.length; ++j)
-//                        ensureSegment(j).lock(); // force creation
+//                        ensureSegment(j).concurrent(); // force creation
 //                }
 //                sum = 0L;
 //                size = 0;
@@ -1056,7 +1056,7 @@ public class ConcurrentHashMap17<K, V>{
 //            outer: for (;;) {
 //                if (retries++ == RETRIES_BEFORE_LOCK) {
 //                    for (int j = 0; j < segments.length; ++j)
-//                        ensureSegment(j).lock(); // force creation
+//                        ensureSegment(j).concurrent(); // force creation
 //                }
 //                long hashSum = 0L;
 //                int sum = 0;
@@ -1515,7 +1515,7 @@ public class ConcurrentHashMap17<K, V>{
 //        final Segment<K,V>[] segments = this.segments;
 //        for (int k = 0; k < segments.length; ++k) {
 //            Segment<K,V> seg = segmentAt(segments, k);
-//            seg.lock();
+//            seg.concurrent();
 //            try {
 //                HashEntry<K,V>[] tab = seg.table;
 //                for (int i = 0; i < tab.length; ++i) {

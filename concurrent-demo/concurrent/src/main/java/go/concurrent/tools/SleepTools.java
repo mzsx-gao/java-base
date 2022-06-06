@@ -3,7 +3,7 @@ package go.concurrent.tools;
 import java.util.concurrent.TimeUnit;
 
 /**
- *@author Mark老师   享学课堂 https://enjoy.ke.qq.com 
+ *@author  gaosd   享学课堂 https://enjoy.ke.qq.com
  *
  *类说明：线程休眠辅助工具类
  */
